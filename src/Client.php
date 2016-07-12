@@ -106,7 +106,10 @@ class Client
     public function addPackage($package)
     {
         $packageHandler = new PackageHandler();
-        $packageHandler->validate($package);
+        $validate = $packageHandler->validate($package);
+        if (!empty($validate)) {
+            return $validate;
+        }
         $package = new Package($package);
 
         return new Response\AddPackageResponse($this->getRequest()->call('addPackage', $package->toArray()));

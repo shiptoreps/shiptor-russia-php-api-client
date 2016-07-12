@@ -3,5 +3,5 @@ namespace ShiptorRussiaApiClient\Client\Exception;
 
 class EmptyDepartureException extends ClientException
 {
-    protected $message = 'Departure cannot be empty!';
+    protected $message = 'Departure cannot be empty.';
 }

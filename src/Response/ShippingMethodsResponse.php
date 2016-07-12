@@ -9,6 +9,7 @@ class ShippingMethodsResponse extends AbstractResponse
      * @var ShippingMethodResponse[]
      */
     private $shippingMethods;
+
     public function __construct($data)
     {
         parent::__construct($data);
@@ -16,6 +17,7 @@ class ShippingMethodsResponse extends AbstractResponse
             $this->shippingMethods[] = new ShippingMethodResponse(array('result' => $shippingMethod));
         }
     }
+
     /**
      * @return ShippingMethodResponse[]
      */

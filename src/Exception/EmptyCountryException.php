@@ -3,5 +3,5 @@ namespace ShiptorRussiaApiClient\Client\Exception;
 
 class EmptyCountryException extends ClientException
 {
-    protected $message = 'Country cannot be empty!';
+    protected $message = 'Country cannot be empty.';
 }
