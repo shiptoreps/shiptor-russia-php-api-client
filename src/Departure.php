@@ -36,6 +36,6 @@ class Departure
      */
     public function getAddress()
     {
-        return $this->getAddress();
+        return $this->address;
     }
 }

@@ -6,6 +6,7 @@ use ShiptorRussiaApiClient\Client\Handler\PackageHandler;
 class Client
 {
     protected $request;
+
     /**
      * @param string $apiKey
      * @param string $apiUrl
@@ -14,6 +15,7 @@ class Client
     {
         $this->request = new Request($apiKey, $apiUrl);
     }
+
     /**
      * @return Request
      */
@@ -44,11 +46,18 @@ class Client
     }
 
     /**
+     * @param null $kladr
+     * @param null $courier
+     * @param null $shippingMethod
      * @return Response\DeliveryPointsResponse
      */
-    public function getDeliveryPoints()
+    public function getDeliveryPoints($kladr = null, $courier = null, $shippingMethod = null)
     {
-        return new Response\DeliveryPointsResponse($this->getRequest()->call('getDeliveryPoints'));
+        return new Response\DeliveryPointsResponse($this->getRequest()->call('getDeliveryPoints', [
+            'kladr_id' => $kladr,
+            'courier' => $courier,
+            'shipping_method' => $shippingMethod,
+        ]));
     }
 
     /**
@@ -63,7 +72,7 @@ class Client
      * @throws Exception\EmptyDimensionsException
      * @throws Exception\EmptyWeightException
      * @throws Exception\CodAmountException
-     * @throws Exception\EmptyApiKeyException
+     * @throws Exception\EmptyKladrException
      */
     public function calculateShipping($length, $width, $height, $weight, $cod = 0, $declaredCost = 0, $kladr)
     {
@@ -77,7 +86,7 @@ class Client
             throw new Exception\CodAmountException();
         }
         if (empty($kladr)) {
-            throw new Exception\EmptyApiKeyException();
+            throw new Exception\EmptyKladrException();
         }
         return new Response\CalculateShippingResponse($this->getRequest()->call('calculateShipping',[
             'length' => $length,

@@ -98,7 +98,7 @@ class Package
                     'phone' => $this->getDeparture()->getAddress()->getPhone(),
                     'postal_code' => $this->getDeparture()->getAddress()->getPostalCode(),
                     'administrative_area' => $this->getDeparture()->getAddress()->getAdministrativeArea(),
-                    'locality' => $this->getDeparture()->getAddress()->getLocality(),
+                    'settlement' => $this->getDeparture()->getAddress()->getSettlement(),
                     'street' => $this->getDeparture()->getAddress()->getStreet(),
                     'house' => $this->getDeparture()->getAddress()->getHouse(),
                     'apartment' => $this->getDeparture()->getAddress()->getApartment(),
