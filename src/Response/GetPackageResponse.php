@@ -24,6 +24,7 @@ class GetPackageResponse extends AbstractResponse
             $this->history[] = new HistoryResponse(array('result' => $history));
         }
     }
+
     /**
      * @return int
      */

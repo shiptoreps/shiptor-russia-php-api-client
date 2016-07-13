@@ -78,9 +78,9 @@ class Address
     /**
      * @return string
      */
-    public function getLocality()
+    public function getSettlement()
     {
-        return isset($this->data['locality']) ? $this->data['locality'] : null;
+        return isset($this->data['settlement']) ? $this->data['settlement'] : null;
     }
 
     /**

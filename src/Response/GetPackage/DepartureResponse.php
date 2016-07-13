@@ -30,6 +30,7 @@ class DepartureResponse extends AbstractResponse
         $this->address = new AddressResponse(array('result' => $this->data['address']));
         $this->deliveryPoint = new DeliveryPointResponse(array('result' => $this->data['delivery_point']));
     }
+
     /**
      * @return ShippingMethodResponse
      */

@@ -3,5 +3,5 @@ namespace ShiptorRussiaApiClient\Client\Exception;
 
 class EmptyAddressException extends ClientException
 {
-    protected $message = 'Address cannot be empty!';
+    protected $message = 'Address cannot be empty.';
 }

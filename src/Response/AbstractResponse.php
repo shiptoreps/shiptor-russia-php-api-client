@@ -7,6 +7,7 @@ abstract class AbstractResponse
      * @var array
      */
     protected $data;
+
     public function __construct($data)
     {
         if (empty($data['error']) && !empty($data['result'])) {
