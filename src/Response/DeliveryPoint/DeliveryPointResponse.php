@@ -43,7 +43,7 @@ class DeliveryPointResponse extends AbstractResponse
     /**
      * @return array
      */
-    public function getParents()
+    public function getPhones()
     {
         return $this->data['phones'];
     }
