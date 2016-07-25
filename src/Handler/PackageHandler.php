@@ -15,7 +15,7 @@ use ShiptorRussiaApiClient\Client\Exception\EmptyPostalCodeException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyStreetException;
 use ShiptorRussiaApiClient\Client\Exception\EmptySurnameException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyWeightException;
-use ShiptorRussiaApiClient\Client\Exception\ShippingMethodException;
+use ShiptorRussiaApiClient\Client\Exception\EmptyShippingMethodException;
 
 class PackageHandler
 {
@@ -56,7 +56,7 @@ class PackageHandler
 
         try {
             if (empty($package['departure']['shipping_method'])) {
-                throw new ShippingMethodException();
+                throw new EmptyShippingMethodException();
             }
         } catch(ClientException $e) {
             $error[] = $e->getMessage();

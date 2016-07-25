@@ -1,7 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Exception;
 
-class ShippingMethodException extends ClientException
+class EmptyShippingMethodException extends ClientException
 {
     protected $message = 'Shipping method cannot be empty.';
 }
