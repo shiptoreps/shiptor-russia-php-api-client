@@ -8,11 +8,9 @@ use ShiptorRussiaApiClient\Client\Exception\EmptyCountryException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyDepartureException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyDimensionsException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyEmailException;
-use ShiptorRussiaApiClient\Client\Exception\EmptyHouseException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyNameException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyPhoneException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyPostalCodeException;
-use ShiptorRussiaApiClient\Client\Exception\EmptyStreetException;
 use ShiptorRussiaApiClient\Client\Exception\EmptySurnameException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyWeightException;
 use ShiptorRussiaApiClient\Client\Exception\EmptyShippingMethodException;
@@ -113,22 +111,6 @@ class PackageHandler
         try {
             if (empty($package['departure']['address']['postal_code'])) {
                 throw new EmptyPostalCodeException();
-            }
-        } catch(ClientException $e) {
-            $error[] = $e->getMessage();
-        }
-
-        try {
-            if (empty($package['departure']['address']['street'])) {
-                throw new EmptyStreetException();
-            }
-        } catch(ClientException $e) {
-            $error[] = $e->getMessage();
-        }
-
-        try {
-            if (empty($package['departure']['address']['house'])) {
-                throw new EmptyHouseException();
             }
         } catch(ClientException $e) {
             $error[] = $e->getMessage();

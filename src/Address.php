@@ -86,9 +86,17 @@ class Address
     /**
      * @return string
      */
+    public function getAddressLine1()
+    {
+        return isset($this->data['address_line_1']) ? $this->data['address_line_1'] : null;
+    }
+
+    /**
+     * @return string
+     */
     public function getStreet()
     {
-        return $this->data['street'];
+        return isset($this->data['street']) ? $this->data['street'] : null;
     }
 
     /**
@@ -96,7 +104,7 @@ class Address
      */
     public function getHouse()
     {
-        return $this->data['house'];
+        return isset($this->data['house']) ? $this->data['house'] : null;
     }
 
     /**
