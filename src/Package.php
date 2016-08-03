@@ -99,6 +99,7 @@ class Package
                     'postal_code' => $this->getDeparture()->getAddress()->getPostalCode(),
                     'administrative_area' => $this->getDeparture()->getAddress()->getAdministrativeArea(),
                     'settlement' => $this->getDeparture()->getAddress()->getSettlement(),
+                    'address_line_1' => $this->getDeparture()->getAddress()->getAddressLine1(),
                     'street' => $this->getDeparture()->getAddress()->getStreet(),
                     'house' => $this->getDeparture()->getAddress()->getHouse(),
                     'apartment' => $this->getDeparture()->getAddress()->getApartment(),
