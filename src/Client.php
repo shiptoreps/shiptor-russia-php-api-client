@@ -6,6 +6,7 @@ use ShiptorRussiaApiClient\Client\Handler\PackageHandler;
 class Client
 {
     protected $request;
+
     /**
      * @param string $apiKey
      * @param string $apiUrl
@@ -14,6 +15,7 @@ class Client
     {
         $this->request = new Request($apiKey, $apiUrl);
     }
+
     /**
      * @return Request
      */
@@ -44,11 +46,18 @@ class Client
     }
 
     /**
+     * @param null $kladr
+     * @param null $courier
+     * @param null $shippingMethod
      * @return Response\DeliveryPointsResponse
      */
-    public function getDeliveryPoints()
+    public function getDeliveryPoints($kladr = null, $courier = null, $shippingMethod = null)
     {
-        return new Response\DeliveryPointsResponse($this->getRequest()->call('getDeliveryPoints'));
+        return new Response\DeliveryPointsResponse($this->getRequest()->call('getDeliveryPoints', [
+            'kladr_id' => $kladr,
+            'courier' => $courier,
+            'shipping_method' => $shippingMethod,
+        ]));
     }
 
     /**
@@ -59,13 +68,14 @@ class Client
      * @param int    $cod
      * @param int    $declaredCost
      * @param string $kladr
+     * @param string $countryCode
      * @return Response\CalculateShippingResponse
      * @throws Exception\EmptyDimensionsException
      * @throws Exception\EmptyWeightException
      * @throws Exception\CodAmountException
-     * @throws Exception\EmptyApiKeyException
+     * @throws Exception\EmptyKladrException
      */
-    public function calculateShipping($length, $width, $height, $weight, $cod = 0, $declaredCost = 0, $kladr)
+    public function calculateShipping($length, $width, $height, $weight, $cod = 0, $declaredCost = 0, $kladr, $countryCode = 'RU')
     {
         if (empty($length) || empty($width) || empty($height)) {
             throw new Exception\EmptyDimensionsException();
@@ -77,7 +87,7 @@ class Client
             throw new Exception\CodAmountException();
         }
         if (empty($kladr)) {
-            throw new Exception\EmptyApiKeyException();
+            throw new Exception\EmptyKladrException();
         }
         return new Response\CalculateShippingResponse($this->getRequest()->call('calculateShipping',[
             'length' => $length,
@@ -87,6 +97,7 @@ class Client
             'cod' => $cod,
             'declared_cost' => $declaredCost,
             'kladr_id' => $kladr,
+            'country_code' => $countryCode,
         ]));
     }
 
@@ -97,7 +108,10 @@ class Client
     public function addPackage($package)
     {
         $packageHandler = new PackageHandler();
-        $packageHandler->validate($package);
+        $validate = $packageHandler->validate($package);
+        if (!empty($validate)) {
+            return $validate;
+        }
         $package = new Package($package);
 
         return new Response\AddPackageResponse($this->getRequest()->call('addPackage', $package->toArray()));

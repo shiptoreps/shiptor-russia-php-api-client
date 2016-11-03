@@ -3,5 +3,5 @@ namespace ShiptorRussiaApiClient\Client\Exception;
 
 class EmptyStreetException extends ClientException
 {
-    protected $message = 'Street cannot be empty!';
+    protected $message = 'Street cannot be empty.';
 }

@@ -9,6 +9,7 @@ class SettlementsResponse extends AbstractResponse
      * @var SettlementResponse[]
      */
     private $settlements;
+
     public function __construct($data)
     {
         parent::__construct($data);

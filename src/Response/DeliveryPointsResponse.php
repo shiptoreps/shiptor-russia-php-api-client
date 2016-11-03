@@ -9,6 +9,7 @@ class DeliveryPointsResponse extends AbstractResponse
      * @var DeliveryPointResponse[]
      */
     private $deliveryPoints;
+
     public function __construct($data)
     {
         parent::__construct($data);
@@ -16,6 +17,7 @@ class DeliveryPointsResponse extends AbstractResponse
             $this->deliveryPoints[] = new DeliveryPointResponse(array('result' => $deliveryPoint));
         }
     }
+
     /**
      * @return DeliveryPointResponse[]
      */

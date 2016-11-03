@@ -72,6 +72,14 @@ class AddressResponse extends AbstractResponse
     /**
      * @return string
      */
+    public function getAddressLine1()
+    {
+        return $this->data['address_line_1'];
+    }
+
+    /**
+     * @return string
+     */
     public function getStreet()
     {
         return $this->data['street'];
