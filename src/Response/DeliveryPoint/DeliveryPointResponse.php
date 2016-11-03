@@ -65,6 +65,14 @@ class DeliveryPointResponse extends AbstractResponse
     }
 
     /**
+     * @return bool
+     */
+    public function getCod()
+    {
+        return $this->data['cod'];
+    }
+
+    /**
      * @return string
      */
     public function getShippingDays()
