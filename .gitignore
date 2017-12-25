@@ -5,3 +5,4 @@ phpunit.xml
 /bin
 /scripts
 /.idea
+/nbproject

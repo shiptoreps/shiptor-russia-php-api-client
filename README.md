@@ -1,2 +1,4 @@
 # shiptor-russia-php-api-client
-PHP client for Shiptor API
+PHP клиент для Shiptor API
+
+- Встроенная валидация
