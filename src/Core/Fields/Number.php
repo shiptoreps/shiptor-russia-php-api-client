@@ -13,4 +13,7 @@ class Number extends Field{
     protected function checkSingleValue($value){
         return is_numeric($value);
     }
+    public function isEmpty(){
+        return !is_numeric($this->value);
+    }
 }

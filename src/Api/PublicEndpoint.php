@@ -1,13 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api;
 
-use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request\CalculateShipping,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request\GetCountries,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request\GetDaysOff,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request\GetDeliveryPoints,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request\GetSettlements,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request\GetTracking,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request\SuggestSettlement;
+use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request as PublicRequest;
 
 class PublicEndpoint{
     protected $calculateShipping;
@@ -19,32 +13,32 @@ class PublicEndpoint{
     protected $getDaysOff;
 
     public function calculateShipping(){
-        return $this->calculateShipping = new CalculateShipping();
+        return $this->calculateShipping = new PublicRequest\CalculateShipping();
     }
     public function getDeliveryPoints(){
-        return $this->getDeliveryPoints = new GetDeliveryPoints();
+        return $this->getDeliveryPoints = new PublicRequest\GetDeliveryPoints();
     }
     public function getSettlements(){
-        return $this->getSettlements = new GetSettlements();
+        return $this->getSettlements = new PublicRequest\GetSettlements();
     }
     public function getTracking($trackNum = null){
-        $this->getTracking = new GetTracking();
+        $this->getTracking = new PublicRequest\GetTracking();
         if(!empty($trackNum)){
             $this->getTracking->query($trackNum);
         }
         return $this->getTracking;
     }
     public function suggestSettlement($query = null){
-        $this->suggestSettlement = new SuggestSettlement();
+        $this->suggestSettlement = new PublicRequest\SuggestSettlement();
         if(!empty($query)){
             $this->suggestSettlement->query($query);
         }
         return $this->suggestSettlement;
     }
     public function getCountries(){
-        return $this->getCountries = new GetCountries();
+        return $this->getCountries = new PublicRequest\GetCountries();
     }
     public function getDaysOff(){
-        return $this->getDaysOff = new GetDaysOff();
+        return $this->getDaysOff = new PublicRequest\GetDaysOff();
     }
 }

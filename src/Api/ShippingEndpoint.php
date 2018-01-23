@@ -1,41 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api;
 
-use ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddPackage,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddCourierPackages,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddDeliveryPointPackages,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddPickup,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddProduct,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddProvider,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddService,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddShipment,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\AddWarehouse,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\CalculateShipping,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\CalculateShippingInternational,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\CancelPickup,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\DeletePackage,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\DeleteProduct,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\DeleteProvider,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\DeleteService,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\DeleteShipment,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\DeleteWarehouse,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetCountries,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetDeliveryPoints,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetDeliveryTime,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetPackage,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetPackages,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetPackagesCount,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetPickup,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetPickupTime,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetServices,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetSettlements,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetShipment,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetShipments,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetShippingMethods,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetWarehouse,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GetWarehouses,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\SearchPackages,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\SuggestSettlement;
+use ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request as ShippingRequest;
 
 class ShippingEndpoint{
     private $addCourierPackages;
@@ -74,152 +40,152 @@ class ShippingEndpoint{
     private $searchPackages;
     private $suggestSettlement;
     public function addPackage(){
-        return $this->addPackage = new AddPackage();
+        return $this->addPackage = new ShippingRequest\AddPackage();
     }
     public function addCourierPackages(){
-        return $this->addCourierPackages = new AddCourierPackages();
+        return $this->addCourierPackages = new ShippingRequest\AddCourierPackages();
     }
     public function addDeliveryPointPackages(){
-        return $this->addDeliveryPointPackages = new AddDeliveryPointPackages();
+        return $this->addDeliveryPointPackages = new ShippingRequest\AddDeliveryPointPackages();
     }
     public function addPickup(){
-        return $this->addPickup = new AddPickup();
+        return $this->addPickup = new ShippingRequest\AddPickup();
     }
     public function addProduct(){
-        return $this->addProduct = new AddProduct();
+        return $this->addProduct = new ShippingRequest\AddProduct();
     }
     public function addProvider(){
-        return $this->addProvider = new AddProvider();
+        return $this->addProvider = new ShippingRequest\AddProvider();
     }
     public function addService(){
-        return $this->addService = new AddService();
+        return $this->addService = new ShippingRequest\AddService();
     }
     public function addShipment(){
-        return $this->addShipment = new AddShipment();
+        return $this->addShipment = new ShippingRequest\AddShipment();
     }
     public function addWarehouse(){
-        return $this->addWarehouse = new AddWarehouse();
+        return $this->addWarehouse = new ShippingRequest\AddWarehouse();
     }
     public function calculateShipping() {
-        return $this->calculateShipping = new CalculateShipping();
+        return $this->calculateShipping = new ShippingRequest\CalculateShipping();
     }
     public function calculateShippingInternational(){
-        return $this->calculateShippingInternational = new CalculateShippingInternational();
+        return $this->calculateShippingInternational = new ShippingRequest\CalculateShippingInternational();
     }
     public function cancelPickup($id = null){
-        $this->cancelPickup = new CancelPickup();
+        $this->cancelPickup = new ShippingRequest\CancelPickup();
         if(!empty($id)){
             $this->cancelPickup->setId($id);
         }
         return $this->cancelPickup;
     }
     public function deletePackage($externalId = null){
-        $this->deletePackage = new DeletePackage();
+        $this->deletePackage = new ShippingRequest\DeletePackage();
         if(!empty($externalId)){
             $this->deletePackage->setExternalId($externalId);
         }
         return $this->deletePackage;
     }
     public function deleteProduct($shopArticle = null){
-        $this->deleteProduct = new DeleteProduct();
+        $this->deleteProduct = new ShippingRequest\DeleteProduct();
         if(!empty($shopArticle)){
             $this->deleteProduct->setShopArticle($shopArticle);
         }
         return $this->deleteProduct;
     }
     public function deleteProvider($id = null){
-        $this->deleteProvider = new DeleteProvider();
+        $this->deleteProvider = new ShippingRequest\DeleteProvider();
         if(!empty($id)){
             $this->deleteProvider->setId($id);
         }
         return $this->deleteProvider;
     }
     public function deleteService($shopArticle = null){
-        $this->deleteService = new DeleteService();
+        $this->deleteService = new ShippingRequest\DeleteProvider();
         if(!empty($shopArticle)){
             $this->deleteService->setShopArticle($shopArticle);
         }
         return $this->deleteService;
     }
     public function deleteShipment($id = null){
-        $this->deleteShipment = new DeleteShipment();
+        $this->deleteShipment = new ShippingRequest\DeleteShipment();
         if(!empty($id)){
             $this->deleteShipment->setId($id);
         }
         return $this->deleteShipment;
     }
     public function deleteWarehouse($id = null){
-        $this->deleteWarehouse = new DeleteWarehouse();
+        $this->deleteWarehouse = new ShippingRequest\DeleteWarehouse();
         if(!empty($id)){
             $this->deleteWarehouse->setId($id);
         }
         return $this->deleteWarehouse;
     }
     public function getCountries(){
-        return $this->getCountries = new GetCountries();
+        return $this->getCountries = new ShippingRequest\GetCountries();
     }
     public function getDeliveryPoints(){
-        return $this->getDeliveryPoints = new GetDeliveryPoints();
+        return $this->getDeliveryPoints = new ShippingRequest\GetDeliveryPoints();
     }
     public function getDeliveryTime(){
-        return $this->getDeliveryTime = new GetDeliveryTime();
+        return $this->getDeliveryTime = new ShippingRequest\GetDeliveryTime();
     }
     public function getPackage($externalId = null){
-        $this->getPackage = new GetPackage();
+        $this->getPackage = new ShippingRequest\GetPackage();
         if(!empty($externalId)){
             $this->getPackage->setExternalId($externalId);
         }
         return $this->getPackage;
     }
     public function getPackages(){
-        return $this->getPackages = new GetPackages();
+        return $this->getPackages = new ShippingRequest\GetPackages();
     }
     public function getPackagesCount(){
-        return $this->getPackagesCount = new GetPackagesCount();
+        return $this->getPackagesCount = new ShippingRequest\GetPackagesCount();
     }
     public function getPickUp($id = null){
-        $this->getPickup = new GetPickup();
+        $this->getPickup = new ShippingRequest\GetPickup();
         if(!empty($id)){
             $this->getPickup->setId($id);
         }
         return $this->getPickup;
     }
     public function getPickupTime(){
-        return $this->getPickupTime = new GetPickupTime();
+        return $this->getPickupTime = new ShippingRequest\GetPickupTime();
     }
     public function getSettlements(){
-        return $this->getSettlements = new GetSettlements();
+        return $this->getSettlements = new ShippingRequest\GetSettlements();
     }
     public function getServices(){
-        return $this->getServices = new GetServices();
+        return $this->getServices = new ShippingRequest\GetServices();
     }
     public function getShipments(){
-        return $this->getShipments = new GetShipments();
+        return $this->getShipments = new ShippingRequest\GetShipments();
     }
     public function getShipment($shipmentId = null){
-        $this->getShipment = new GetShipment();
+        $this->getShipment = new ShippingRequest\GetShipment();
         if(!empty($shipmentId)){
             $this->getShipment->setId($shipmentId);
         }
         return $this->getShipment;
     }
     public function getShippingMethods(){
-        return $this->getShippingMethods = new GetShippingMethods();
+        return $this->getShippingMethods = new ShippingRequest\GetShippingMethods();
     }
     public function getWarehouse($warehouseId = null){
-        $this->getWarehouse = new GetWarehouse();
+        $this->getWarehouse = new ShippingRequest\GetWarehouse();
         if(!empty($warehouseId)){
             $this->getWarehouse->setId($warehouseId);
         }
         return $this->getWarehouse;
     }
     public function getWarehouses(){
-        return $this->getWarehouses = new GetWarehouses();
+        return $this->getWarehouses = new ShippingRequest\GetWarehouses();
     }
     public function searchPackages(){
-        return $this->searchPackages = new SearchPackages();
+        return $this->searchPackages = new ShippingRequest\SearchPackages();
     }
     public function suggestSettlement(){
-        return $this->suggestSettlement = new SuggestSettlement();
+        return $this->suggestSettlement = new ShippingRequest\SuggestSettlement();
     }
 }

@@ -30,6 +30,7 @@ abstract class Custom extends Field{
         return $this;
     }
     public function isEmpty(){
+        $this->value = $this->getValue();
         return empty($this->value);
     }
     public function validate(){
