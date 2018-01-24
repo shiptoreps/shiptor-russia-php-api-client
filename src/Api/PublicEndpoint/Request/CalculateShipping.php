@@ -75,7 +75,7 @@ class CalculateShipping extends GenericRequest{
     public function forShiptorCourier(){
         return $this->setCourier(self::COURIER_SHIPTOR);
     }
-    public function forShiptor1Day(){
+    public function forShiptorToday(){
         return $this->setCourier(self::COURIER_SHIPTOR_1DAY);
     }
     public function forShiptorOversize(){
