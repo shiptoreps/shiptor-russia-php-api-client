@@ -31,7 +31,7 @@ class GetSettlements extends GenericRequest{
         return $this->setField("types", self::SETTLEMENT_TYPE_CITY);
     }
     public function setLevel($value){
-        return $this->setField("types", $value);
+        return $this->setField("level", $value);
     }
     public function setParentKladr($value){
         return $this->setField("parent", $value);

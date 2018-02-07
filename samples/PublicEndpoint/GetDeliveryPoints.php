@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 $shiptor = new Shiptor();
 
-$response = $shiptor->PublicEndpoint()->GetDeliveryPoints()->inMoscow()->forDpd()->setShippingMethod(18)->send();
+$response = $shiptor->PublicEndpoint()->getDeliveryPoints()->inMoscow()->forDpd()->setShippingMethod(18)->send();
 
 if($response instanceof ErrorResponse):?>
     <p><?php echo $response->getMessage()?></p>

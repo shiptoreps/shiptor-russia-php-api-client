@@ -27,6 +27,7 @@ class ShippingEndpoint{
     private $getPackagesCount;
     private $getPickup;
     private $getPickupTime;
+    private $getProducts;
     private $getServices;
     private $getSettlements;
     private $getShipment;
@@ -155,6 +156,9 @@ class ShippingEndpoint{
     }
     public function getSettlements(){
         return $this->getSettlements = new ShippingRequest\GetSettlements();
+    }
+    public function getProducts(){
+        return $this->getProducts = new ShippingRequest\GetProducts();
     }
     public function getServices(){
         return $this->getServices = new ShippingRequest\GetServices();
