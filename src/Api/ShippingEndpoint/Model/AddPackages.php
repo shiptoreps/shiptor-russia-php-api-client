@@ -19,7 +19,7 @@ class AddPackages extends Result{
         return $this->shipment;
     }
     private function setPackages(){
-        $this->packages = new PackagesCollection($this->elements,Package::class);
+        $this->packages = new PackagesCollection($this->get('packages'),Package::class);
     }
     public function hasPackages(){
         return ($this->getPackages()->count() > 0);
