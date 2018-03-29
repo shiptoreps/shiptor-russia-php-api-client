@@ -5,6 +5,7 @@ use ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GenericRequest as
     ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Model\Methods as GetShippingMethodsResult;
 
 class GetShippingMethods extends GenericShippingRequest{
+    protected $name = "getShippingMethods";
     protected function initFields(){
         //
     }
