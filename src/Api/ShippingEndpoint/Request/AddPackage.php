@@ -33,7 +33,7 @@ class AddPackage extends GenericShippingRequest{
                     ->String("receiver")->add()
                     ->String("email")->setRequired()->add()
                     ->String("phone")->setRequired()->add()
-                    ->String("postal_code")->setRequired()->add()
+                    ->String("postal_code")->add()
                     ->String("administrative_area")->add()
                     ->String("settlement")->add()
                     ->String("street")->add()
@@ -46,6 +46,28 @@ class AddPackage extends GenericShippingRequest{
             ->Custom("products",PackageProduct::class)->setRequired()->setMulty()->add()
             ->String("photos")->setMulty()->add()
             ->Custom("services",PackageService::class)->setMulty()->add();
+    }
+    public function validate(){
+        $receiver = $this->getAddress()->get('receiver')->getValue();
+        if(!empty($receiver)){
+            $this->getAddress()->get('name')->unsetRequired();
+            $this->getAddress()->get('surname')->unsetRequired();
+        }
+        $pvz = $this->getDeparture()->get('delivery_point')->getValue();
+        if(empty($pvz)){
+            $street = $this->getAddress()->get('street')->getValue();
+            $house = $this->getAddress()->get('house')->getValue();
+            $addressLine = $this->getAddress()->get('address_line_1')->getValue();
+            if(empty($street) && empty($house)){
+                $this->getAddress()->get('address_line_1')->setRequired();
+            }else{
+                if(empty($street) || empty($house)){
+                    $this->getAddress()->get('street')->setRequired();
+                    $this->getAddress()->get('house')->setRequired();
+                }
+            }
+        }
+        parent::validate();
     }
     public function setStock($stockId){
         return $this->setField("stock", $stockId);
