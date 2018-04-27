@@ -54,4 +54,7 @@ abstract class Custom extends Field{
         }
         return $arData;
     }
+    public function getMethodName(){
+        return $this->getCollection()->getEntity()->getMethodName();
+    }
 }
