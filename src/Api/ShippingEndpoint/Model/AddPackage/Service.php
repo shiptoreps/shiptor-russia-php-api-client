@@ -16,4 +16,7 @@ class Service extends ArrayCollection{
     public function getVat(){
         return $this->get("vat");
     }
+    public function getName(){
+        return $this->get("name");
+    }
 }
