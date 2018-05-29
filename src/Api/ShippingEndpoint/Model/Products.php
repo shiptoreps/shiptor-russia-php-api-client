@@ -19,4 +19,11 @@ class Products extends Result{
     public function getProducts(){
         return $this->products;
     }
+    public function getSingleProduct(){
+        if($this->count() == 1){
+            foreach($this->getProducts() as $product){
+                return $product->toArray();
+            }
+        }
+    }
 }
