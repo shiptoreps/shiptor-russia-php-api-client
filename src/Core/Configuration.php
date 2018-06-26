@@ -19,6 +19,9 @@ class Configuration{
     public static function setName($name){
         self::$name = $name;
     }
+    public static function setVersion($version){
+        self::$version = $version;
+    }
     public static function getApiKey(){
         return self::$apiKey;
     }

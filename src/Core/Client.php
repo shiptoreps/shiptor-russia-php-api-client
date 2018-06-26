@@ -29,9 +29,11 @@ class Client{
     protected function setHeaders(){
         $this->headers = [
             'content-type' => 'application/json',
-            'Integration-Name' => Configuration::getName(),
-            'Integration-Version' => Configuration::getVersion()
+            'Integration-Name' => Configuration::getName()
         ];
+        if(Configuration::getVersion()){
+            $this->headers['Integration-Version'] = Configuration::getVersion();
+        }
     }
     public function call($method, $params = array())
     {
