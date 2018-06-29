@@ -3,7 +3,7 @@ namespace ShiptorRussiaApiClient\Client\Api\ShippingEndpoint;
 
 use ShiptorRussiaApiClient\Client\Core\Exception\EmptyApiKey,
     ShiptorRussiaApiClient\Client\Core\Exception\WrongApiKey,
-    \ShiptorRussiaApiClient\Client\Core\Client as PublicClient,
+    ShiptorRussiaApiClient\Client\Core\Client as PublicClient,
     ShiptorRussiaApiClient\Client\Core\Configuration;
 
 class Client extends PublicClient{
@@ -23,15 +23,10 @@ class Client extends PublicClient{
         }
     }
     protected function setHeaders(){
-        $this->headers = array(
-            'x-authorization-token' => $this->apiKey,
-            'content-type' => 'application/json'
-        );
+        parent::setHeaders();
+        $this->headers['X-Authorization-Token'] = $this->apiKey;
     }
     public static function getInstance(){
-        if(!isset(self::$instance)){
-            self::$instance = new self(Configuration::getApiKey());
-        }
-        return self::$instance;
+        return new self(Configuration::getApiKey());
     }
 }

@@ -9,7 +9,6 @@ class Client{
     protected $apiUrl;
     protected $client;
     protected $headers = [];
-    protected static $instance = null;
 
     protected function __construct($apiUrl)
     {
@@ -21,10 +20,7 @@ class Client{
         $this->client = new GuzzleClient();
     }
     public static function getInstance(){
-        if(!isset(self::$instance)){
-            self::$instance = new self(Configuration::PUBLIC_URL);
-        }
-        return self::$instance;
+        return new self(Configuration::PUBLIC_URL);
     }
     protected function setHeaders(){
         $this->headers = [
