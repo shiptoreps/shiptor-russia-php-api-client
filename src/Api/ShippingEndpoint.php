@@ -21,6 +21,7 @@ class ShippingEndpoint{
     private $deleteProvider;
     private $deleteService;
     private $deleteShipment;
+    private $editProduct;
     private $deleteWarehouse;
     private $getPackage;
     private $getPackages;
@@ -121,6 +122,9 @@ class ShippingEndpoint{
             $this->deleteWarehouse->setId($id);
         }
         return $this->deleteWarehouse;
+    }
+    public function editProduct(){
+        return $this->editProduct = new ShippingRequest\EditProduct();
     }
     public function getCountries(){
         return $this->getCountries = new ShippingRequest\GetCountries();
