@@ -69,7 +69,7 @@ class CalculateShipping extends GenericRequest{
     public function forBy(){
         return $this->setCountryCode(self::COUNTRY_BY);
     }
-    private function setCourier($value){
+    public function setCourier($value){
         return $this->setField("courier",$value);
     }
     public function forShiptorCourier(){
