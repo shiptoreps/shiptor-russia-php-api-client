@@ -9,7 +9,7 @@ class EditProduct extends GenericShippingRequest{
     protected function initFields(){
         $this->getFieldsCollection()
                 ->String("shopArticle")->setRequired()->add()
-                ->String("name")->setRequired()->add()
+                ->String("name")->add()
                 ->Number("length")->add()
                 ->Number("width")->add()
                 ->Number("height")->add()
