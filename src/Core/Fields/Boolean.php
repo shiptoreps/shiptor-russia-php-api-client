@@ -13,4 +13,7 @@ class Boolean extends Field{
     protected function checkSingleValue($value){
         return is_bool($value);
     }
+    public function isEmpty(){
+        return !isset($this->value);
+    }
 }
