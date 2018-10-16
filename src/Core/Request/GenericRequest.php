@@ -83,7 +83,10 @@ abstract class GenericRequest{
     }
     public function getSettlementTypes(){
         return[
-            self::SETTLEMENT_TYPE_CITY
+            self::SETTLEMENT_TYPE_CITY,
+            self::SETTLEMENT_TYPE_OBLAST,
+            self::SETTLEMENT_TYPE_KRAJ,
+            self::SETTLEMENT_TYPE_RESP
         ];
     }
     const COUNTRY_RU = "RU";
@@ -103,6 +106,8 @@ abstract class GenericRequest{
     const COURIER_SPSR = "spsr";
 
     const SETTLEMENT_TYPE_CITY = "Город";
-
+    const SETTLEMENT_TYPE_OBLAST = "Область";
+    const SETTLEMENT_TYPE_KRAJ = "Край";
+    const SETTLEMENT_TYPE_RESP = "Республика";
     const KLADR_MOSCOW = "77000000000";
 }

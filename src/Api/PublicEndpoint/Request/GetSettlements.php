@@ -27,8 +27,21 @@ class GetSettlements extends GenericRequest{
     public function setType($value){
         return $this->setField("types", $value);
     }
+    public function onlyRegions(){
+        return $this->setField("types", array(
+            self::SETTLEMENT_TYPE_OBLAST, self::SETTLEMENT_TYPE_KRAJ, self::SETTLEMENT_TYPE_RESP));
+    }
     public function onlyCities(){
         return $this->setField("types", self::SETTLEMENT_TYPE_CITY);
+    }
+    public function onlyOblast(){
+        return $this->setField("types", self::SETTLEMENT_TYPE_OBLAST);
+    }
+    public function onlyKraj(){
+        return $this->setField("types", self::SETTLEMENT_TYPE_KRAJ);
+    }
+    public function onlyRespublic(){
+        return $this->setField("types", self::SETTLEMENT_TYPE_RESP);
     }
     public function setLevel($value){
         return $this->setField("level", $value);
