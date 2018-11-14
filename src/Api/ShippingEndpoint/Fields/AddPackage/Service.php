@@ -8,7 +8,7 @@ class Service extends Custom{
         $this->getFieldsCollection()
                 ->String("shopArticle")->setRequired()->add()
                 ->Number("count")->setRequired()->add()
-                ->Number("price")->setRequired()->add()
+                ->Number("price")->add()
                 ->Number("vat")->add();
     }
     public function setShopArticle($article){

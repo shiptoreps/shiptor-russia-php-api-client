@@ -22,7 +22,8 @@ class AddProduct extends GenericShippingRequest{
                 ->Boolean("fragile")->add()
                 ->Boolean("danger")->add()
                 ->Boolean("perishable")->add()
-                ->Boolean("needBox")->add();
+                ->Boolean("needBox")->add()
+                ->Boolean("adult")->add();
     }
     public function setName($name){
         return $this->setField("name",$name);
@@ -92,6 +93,12 @@ class AddProduct extends GenericShippingRequest{
     }
     public function boxNotNeeded(){
         return $this->setNeedBox(false);
+    }
+    public function setAdult($adult){
+        return $this->setField("adult",$adult);
+    }
+    public function adult(){
+        return $this->setAdult(true);
     }
     public function getResponseClassName() {
         return AddProductResult::class;
