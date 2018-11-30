@@ -7,6 +7,9 @@ class Product extends ArrayCollection{
     public function getName(){
         return $this->get("name");
     }
+    public function getBrand(){
+        return $this->get("brand");
+    }
     public function getBarcode(){
         return $this->get("barcode");
     }

@@ -12,6 +12,9 @@ class EditProduct extends AddProduct{
     public function setArticle($article){
         throw new \Exception('Not supported!');
     }
+    public function setBrand($brand){
+        throw new \Exception('Not supported!');
+    }
     public function setPrice($price){
         throw new \Exception('Not supported!');
     }
