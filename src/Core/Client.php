@@ -31,8 +31,7 @@ class Client{
             $this->headers['Integration-Version'] = Configuration::getVersion();
         }
     }
-    public function call($method, $params = array())
-    {
+    public function call($method, $params = array()){
         $this->setHeaders();
         $data = array(
             'jsonrpc' => '2.0',
@@ -45,7 +44,15 @@ class Client{
                 'headers' => $this->headers,
                 'body' => json_encode($data),
             ]);
-            $response = $request->json();
+            if($request instanceof \Psr\Http\Message\ResponseInterface){//GuzzleHttp 6.3
+                if($request->getStatusCode() === 200){
+                    $response = json_decode((string)$request->getBody(), true);
+                }else{
+                    throw new \Exception($request->getStatusCode().': '.$request->getReasonPhrase());
+                }
+            }else{//GuzzleHttp 5.1
+                $response = $request->json();
+            }
         } catch (BadResponseException $exception) {
             $response = $exception->getResponse()->json();
         }
