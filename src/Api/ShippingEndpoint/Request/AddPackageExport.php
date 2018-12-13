@@ -10,7 +10,6 @@ class AddPackageExport extends GenericShippingRequest{
     protected $name = "addPackage";
     protected function initFields(){
         $this->getFieldsCollection()
-            ->Number("stock")->add()
             ->Number("length")->setRequired()->add()
             ->Number("width")->setRequired()->add()
             ->Number("height")->setRequired()->add()
@@ -20,8 +19,6 @@ class AddPackageExport extends GenericShippingRequest{
             ->String("external_id")->add()
             ->Collection("departure")
                 ->Number("shipping_method")->setRequired()->add()
-                ->Number("delivery_point")->add()
-                ->Boolean("cashless_payment")->add()
                 ->String("comment")->add()
                 ->Collection("address")
                     ->Enum("country")->setOptions($this->getAvailableCountriesExport())->setRequired()->add()
@@ -31,10 +28,8 @@ class AddPackageExport extends GenericShippingRequest{
                     ->String("postal_code")->add()
                     ->String("administrative_area")->add()
                     ->String("settlement")->add()
-                    ->String("street")->add()
-                    ->String("house")->add()
-                    ->String("apartment")->add()
                     ->String("address_line_1")->add()
+                    ->String("address_line_2")->add()
                 ->endCollection()
             ->endCollection()
             ->Custom("products",PackageProduct::class)->setRequired()->setMulty()->add()
@@ -42,24 +37,7 @@ class AddPackageExport extends GenericShippingRequest{
             ->Custom("services",PackageService::class)->setMulty()->add();
     }
     public function validate(){
-        $pvz = $this->getDeparture()->get('delivery_point')->getValue();
-        if(empty($pvz)){
-            $street = $this->getAddress()->get('street')->getValue();
-            $house = $this->getAddress()->get('house')->getValue();
-            $addressLine = $this->getAddress()->get('address_line_1')->getValue();
-            if(empty($street) && empty($house)){
-                $this->getAddress()->get('address_line_1')->setRequired();
-            }else{
-                if(empty($street) || empty($house)){
-                    $this->getAddress()->get('street')->setRequired();
-                    $this->getAddress()->get('house')->setRequired();
-                }
-            }
-        }
         parent::validate();
-    }
-    public function setStock($stockId){
-        return $this->setField("stock", $stockId);
     }
     public function setDimensions($arLimits){
         $this->setLength($arLimits["LENGTH"]);
@@ -111,10 +89,6 @@ class AddPackageExport extends GenericShippingRequest{
         $this->getDeparture()->get("shipping_method")->setValue($shippingMethod);
         return $this;
     }
-    public function setDeliveryPoint($deliveryPoint){
-        $this->getDeparture()->get("delivery_point")->setValue($deliveryPoint);
-        return $this;
-    }
     public function setComment($comment){
         $this->getDeparture()->get("comment")->setValue($comment);
         return $this;
@@ -147,20 +121,12 @@ class AddPackageExport extends GenericShippingRequest{
         $this->getAddress()->get("settlement")->setValue($city);
         return $this;
     }
-    public function setStreet($street){
-        $this->getAddress()->get("street")->setValue($street);
-        return $this;
-    }
-    public function setHouse($house){
-        $this->getAddress()->get("house")->setValue($house);
-        return $this;
-    }
-    public function setApartment($flat){
-        $this->getAddress()->get("apartment")->setValue($flat);
-        return $this;
-    }
     public function setAddressLine($address){
         $this->getAddress()->get("address_line_1")->setValue($address);
+        return $this;
+    }
+    public function setAddressLine2($address){
+        $this->getAddress()->get("address_line_2")->setValue($address);
         return $this;
     }
     public function newProduct(){
