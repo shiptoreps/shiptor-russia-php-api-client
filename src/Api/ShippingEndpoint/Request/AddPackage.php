@@ -45,7 +45,8 @@ class AddPackage extends GenericShippingRequest{
             ->endCollection()
             ->Custom("products",PackageProduct::class)->setRequired()->setMulty()->add()
             ->String("photos")->setMulty()->add()
-            ->Custom("services",PackageService::class)->setMulty()->add();
+            ->Custom("services",PackageService::class)->setMulty()->add()
+            ->String("additional_service")->setMulty()->add();
     }
     public function validate(){
         $receiver = $this->getAddress()->get('receiver')->getValue();
@@ -78,6 +79,9 @@ class AddPackage extends GenericShippingRequest{
         $this->setHeight($arLimits["HEIGHT"]);
         $this->setWeight($arLimits["WEIGHT"]);
         return $this;
+    }
+    public function setAdditionalService($additionalService){
+        return $this->setField('additional_service', $additionalService);
     }
     public function setLength($length){
         return $this->setField("length", $length);
