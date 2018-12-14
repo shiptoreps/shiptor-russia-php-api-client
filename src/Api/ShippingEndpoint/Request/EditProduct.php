@@ -7,16 +7,9 @@ class EditProduct extends AddProduct{
     protected $name = "editProduct";
     protected function initFields(){
         parent::initFields();
-        $this->getFieldsCollection()->get('article')->unsetRequired();
-    }
-    public function setArticle($article){
-        throw new \Exception('Not supported!');
-    }
-    public function setBrand($brand){
-        throw new \Exception('Not supported!');
-    }
-    public function setPrice($price){
-        throw new \Exception('Not supported!');
+        $this->getFieldsCollection()->remove('article');
+        $this->getFieldsCollection()->remove('brand');
+        $this->getFieldsCollection()->remove('price');
     }
     public function getResponseClassName() {
         return EditProductResult::class;

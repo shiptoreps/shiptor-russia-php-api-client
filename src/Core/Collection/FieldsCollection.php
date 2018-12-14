@@ -24,6 +24,10 @@ class FieldsCollection{
         $this->fields[$name] = $field;
         return $this;
     }
+    public function remove($name){
+        unset($this->fields[$name]);
+        return $this;
+    }
     public function Number($name){
         return $this->createField("Number",$name);
     }
