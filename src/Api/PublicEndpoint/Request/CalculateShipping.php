@@ -1,8 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request;
 
-use ShiptorRussiaApiClient\Client\Core\Request\GenericRequest,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\CalculateShipping as CalculateShippingResult;
+use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\CalculateShipping as CalculateShippingResult;
 
 class CalculateShipping extends GenericRequest{
     protected $name = "calculateShipping";

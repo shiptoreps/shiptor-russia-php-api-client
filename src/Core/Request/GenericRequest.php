@@ -3,8 +3,7 @@ namespace ShiptorRussiaApiClient\Client\Core\Request;
 
 use ShiptorRussiaApiClient\Client\Core\Collection\FieldsCollection,
     ShiptorRussiaApiClient\Client\Core\Response\ErrorResponse,
-    ShiptorRussiaApiClient\Client\Core\Response\GenericResponse,
-    ShiptorRussiaApiClient\Client\Core\Client;
+    ShiptorRussiaApiClient\Client\Core\Response\GenericResponse;
 
 abstract class GenericRequest{
     protected $fields;
@@ -41,9 +40,7 @@ abstract class GenericRequest{
     public function getMethodName(){
         return $this->name;
     }
-    protected function getClient(){
-        return Client::getInstance();
-    }
+    abstract protected function getClient();
     protected function getFieldsCollection(){
         return $this->fields;
     }

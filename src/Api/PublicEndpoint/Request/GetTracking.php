@@ -1,8 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request;
 
-use ShiptorRussiaApiClient\Client\Core\Request\GenericRequest,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\Tracking as TrackingResult;
+use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\Tracking as TrackingResult;
 
 class GetTracking extends GenericRequest{
     protected $name = "getTracking";

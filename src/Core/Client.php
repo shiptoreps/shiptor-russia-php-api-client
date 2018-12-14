@@ -5,22 +5,24 @@ use GuzzleHttp\Client as GuzzleClient,
     GuzzleHttp\Exception\BadResponseException,
     ShiptorRussiaApiClient\Client\Core\Configuration;
 
-class Client{
+abstract class Client{
     protected $apiUrl;
     protected $client;
     protected $headers = [];
+    protected $last_ts = 0;
+    protected static $instances = null;
 
-    protected function __construct($apiUrl)
-    {
-        if(empty($apiUrl)){
-            $this->apiUrl = Configuration::PUBLIC_URL;
-        }else{
-            $this->apiUrl = $apiUrl;
-        }
+    abstract protected function setApiUrl();
+    protected function __construct(){
+        $this->setApiUrl();
         $this->client = new GuzzleClient();
     }
-    public static function getInstance(){
-        return new self(Configuration::PUBLIC_URL);
+    final public static function getInstance(){
+        $calledClass = get_called_class();
+        if (!isset(static::$instances[$calledClass])){
+            static::$instances[$calledClass] = new $calledClass();
+        }
+        return static::$instances[$calledClass];
     }
     protected function setHeaders(){
         $this->headers = [
@@ -40,10 +42,12 @@ class Client{
             'id' => rand(1000,9999)
         );
         try {
+            $this->waitMinimumMsInterval();
             $request = $this->client->post($this->apiUrl, [
                 'headers' => $this->headers,
                 'body' => json_encode($data),
             ]);
+            $this->setLastTimestamp();
             if($request instanceof \Psr\Http\Message\ResponseInterface){//GuzzleHttp 6.3
                 if($request->getStatusCode() === 200){
                     $response = json_decode((string)$request->getBody(), true);
@@ -58,5 +62,16 @@ class Client{
         }
 
         return $response;
+    }
+    public function setLastTimestamp(){
+        Configuration::$last_query_ts = array_sum(explode(' ', microtime()));
+    }
+    public function waitMinimumMsInterval(){
+        $currentMicroTime = array_sum(explode(' ', microtime()));
+        $diffMs = round($currentMicroTime - Configuration::$last_query_ts,3) * 1000;
+        $msToWait = Configuration::getMaxRequestFrequency() * 1000;
+        if($diffMs < $msToWait){
+            usleep(($msToWait - $diffMs) * 1000);
+        }
     }
 }

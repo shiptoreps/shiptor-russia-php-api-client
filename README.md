@@ -9,4 +9,4 @@ SDK PHP для Shiptor API
 Требования:
 
 - PHP 5.5+, 7.0
-- Guzzle HTTP 5.1+
+- Guzzle HTTP 5.1+/6.3+

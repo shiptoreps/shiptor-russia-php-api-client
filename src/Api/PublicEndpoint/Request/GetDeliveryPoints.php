@@ -1,8 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request;
 
-use ShiptorRussiaApiClient\Client\Core\Request\GenericRequest,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\DeliveryPoints as DeliveryPointsResult;
+use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\DeliveryPoints as DeliveryPointsResult;
 
 class GetDeliveryPoints extends GenericRequest{
     protected $name = "getDeliveryPoints";

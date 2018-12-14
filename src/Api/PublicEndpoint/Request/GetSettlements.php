@@ -1,8 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request;
 
-use ShiptorRussiaApiClient\Client\Core\Request\GenericRequest,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\Settlements as SettlementsResult;
+use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\Settlements as SettlementsResult;
 
 class GetSettlements extends GenericRequest{
     protected $name = "getSettlements";

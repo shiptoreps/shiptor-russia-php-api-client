@@ -1,8 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request;
 
-use ShiptorRussiaApiClient\Client\Core\Request\GenericRequest,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\SuggestSettlement as SuggestSettlementResult;
+use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\SuggestSettlement as SuggestSettlementResult;
 
 class SuggestSettlement extends GenericRequest{
     protected $name = "suggestSettlement";

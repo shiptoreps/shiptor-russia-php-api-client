@@ -1,8 +1,7 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Request;
 
-use ShiptorRussiaApiClient\Client\Core\Request\GenericRequest,
-    ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\DaysOff as DaysOffResult;
+use ShiptorRussiaApiClient\Client\Api\PublicEndpoint\Model\DaysOff as DaysOffResult;
 
 class GetDaysOff extends GenericRequest{
     protected $name = "getDaysOff";
