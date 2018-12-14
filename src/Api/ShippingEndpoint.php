@@ -7,6 +7,7 @@ class ShippingEndpoint{
     private $addCourierPackages;
     private $addDeliveryPointPackages;
     private $addPackage;
+    private $addPackageExport;
     private $addPickup;
     private $addProduct;
     private $addProvider;
@@ -43,6 +44,9 @@ class ShippingEndpoint{
     private $suggestSettlement;
     public function addPackage(){
         return $this->addPackage = new ShippingRequest\AddPackage();
+    }
+    public function addPackageExport(){
+        return $this->addPackageExport = new ShippingRequest\AddPackageExport();
     }
     public function addCourierPackages(){
         return $this->addCourierPackages = new ShippingRequest\AddCourierPackages();
