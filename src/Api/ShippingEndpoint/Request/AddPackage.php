@@ -45,7 +45,8 @@ class AddPackage extends GenericShippingRequest{
             ->endCollection()
             ->Custom("products",PackageProduct::class)->setRequired()->setMulty()->add()
             ->String("photos")->setMulty()->add()
-            ->Custom("services",PackageService::class)->setMulty()->add();
+            ->Custom("services",PackageService::class)->setMulty()->add()
+            ->Enum('additional_service')->setOptions($this->getAvailableAdditionalServices())->setMulty()->add();
     }
     public function validate(){
         $receiver = $this->getAddress()->get('receiver')->getValue();
@@ -220,6 +221,31 @@ class AddPackage extends GenericShippingRequest{
     }
     public function newService(){
         return $this->getFieldsCollection()->get('services')->_new();
+    }
+    public function setAdditionalService($service){
+        return $this->setField('additional_service',$service);
+    }
+    protected function addAdditionalService($service){
+        if(in_array($service, $this->getAvailableAdditionalServices())){
+            $value = $this->getFieldsCollection()->get('additional_service')->getValue();
+            if(is_array($value)){
+                $value[] = $service;
+                $service = array_unique($value);
+            }else{
+                $service = array($service);
+            }
+            $this->setAdditionalService($service);
+        }
+        return $this;
+    }
+    public function withExpressGathering(){
+        return $this->addAdditionalService(self::AS_EXPRESS_GATHERING);
+    }
+    public function withPartialPayout(){
+        return $this->addAdditionalService(self::AS_PARTIAL_PAYOUT);
+    }
+    public function withAdditionalPack(){
+        return $this->addAdditionalService(self::AS_ADDITIONAL_PACK);
     }
     public function getResponseClassName() {
         return AddPackageResult::class;
