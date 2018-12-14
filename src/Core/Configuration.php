@@ -5,7 +5,7 @@ class Configuration{
     private static $encoding = "UTF-8";
     private static $apiKey = "";
     private static $name = "Shiptor Russia SDK";
-    private static $version = "1.2.4";
+    private static $version = "1.2.5";
     public static $last_query_ts = 0;
 
     const PUBLIC_URL = "https://api.shiptor.ru/public/v1";

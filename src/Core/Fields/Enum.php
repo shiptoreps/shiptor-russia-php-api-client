@@ -15,8 +15,11 @@ class Enum extends Field{
     public function checkOptions(){
         if($this->isMulty()){
             $checkResult = [];
-            foreach($this->getValue() as $value){
-                $checkResult[] = in_array($value,$this->getOptions());
+            $values = $this->getValue();
+            if(!empty($values)){
+                foreach($values as $value){
+                    $checkResult[] = in_array($value,$this->getOptions());
+                }
             }
             return array_product($checkResult);
         }else{
