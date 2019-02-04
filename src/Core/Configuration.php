@@ -5,12 +5,12 @@ class Configuration{
     private static $encoding = "UTF-8";
     private static $apiKey = "";
     private static $name = "Shiptor Russia SDK";
-    private static $version = "1.2.5";
+    private static $version = "1.2.6";
+    private static $MAX_REQUEST_PER_SEC = 3;
     public static $last_query_ts = 0;
 
     const PUBLIC_URL = "https://api.shiptor.ru/public/v1";
     const SHIPPING_URL = "https://api.shiptor.ru/shipping/v1";
-    const MAX_REQUEST_PER_SEC = 3;
 
     public static function setApiKey($apiKey){
         self::$apiKey = $apiKey;
@@ -37,6 +37,15 @@ class Configuration{
         return self::$name;
     }
     public static function getMaxRequestFrequency(){
-        return round(1/self::MAX_REQUEST_PER_SEC, 3);
+        if(self::$MAX_REQUEST_PER_SEC == 0){
+            return 0;
+        }
+        return round(1/self::$MAX_REQUEST_PER_SEC, 3);
+    }
+    public static function getMaxRequestNum(){
+        return self::$MAX_REQUEST_PER_SEC;
+    }
+    public static function setMaxRequestNum($numOfRequest){
+        self::$MAX_REQUEST_PER_SEC = intval($numOfRequest);
     }
 }

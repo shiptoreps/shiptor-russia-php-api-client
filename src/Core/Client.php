@@ -67,11 +67,13 @@ abstract class Client{
         Configuration::$last_query_ts = array_sum(explode(' ', microtime()));
     }
     public function waitMinimumMsInterval(){
-        $currentMicroTime = array_sum(explode(' ', microtime()));
-        $diffMs = round($currentMicroTime - Configuration::$last_query_ts,3) * 1000;
         $msToWait = Configuration::getMaxRequestFrequency() * 1000;
-        if($diffMs < $msToWait){
-            usleep(($msToWait - $diffMs) * 1000);
+        if($msToWait > 0){
+            $currentMicroTime = array_sum(explode(' ', microtime()));
+            $diffMs = round($currentMicroTime - Configuration::$last_query_ts, 3) * 1000;
+            if($diffMs < $msToWait){
+                usleep(($msToWait - $diffMs) * 1000);
+            }
         }
     }
 }
