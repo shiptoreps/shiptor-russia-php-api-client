@@ -19,6 +19,13 @@ class GetDeliveryPoints extends GenericRequest{
                     ->Number("weight")->add()
                 ->endCollection();
     }
+    public function validate(){
+        $courier = $this->getFieldsCollection()->get('courier')->getValue();
+        if(!empty($courier)){
+            $this->getFieldsCollection()->get('shipping_method')->unsetRequired();
+        }
+        parent::validate();
+    }
     public function setLimits($arLimits){
         $this->getLimits()->get("length")->setValue($arLimits["LENGTH"]);
         $this->getLimits()->get("width")->setValue($arLimits["WIDTH"]);
