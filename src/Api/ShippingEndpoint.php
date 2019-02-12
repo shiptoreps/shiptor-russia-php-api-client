@@ -35,6 +35,7 @@ class ShippingEndpoint{
     private $getShipment;
     private $getShipments;
     private $getShippingMethods;
+    private $getStatusList;
     private $getCountries;
     private $getDeliveryPoints;
     private $getDeliveryTime;
@@ -184,6 +185,9 @@ class ShippingEndpoint{
     }
     public function getShippingMethods(){
         return $this->getShippingMethods = new ShippingRequest\GetShippingMethods();
+    }
+    public function getStatusList(){
+        return $this->getStatusList = new ShippingRequest\GetStatusList();
     }
     public function getWarehouse($warehouseId = null){
         $this->getWarehouse = new ShippingRequest\GetWarehouse();

@@ -5,7 +5,7 @@ class Configuration{
     private static $encoding = "UTF-8";
     private static $apiKey = "";
     private static $name = "Shiptor Russia SDK";
-    private static $version = "1.2.7";
+    private static $version = "1.2.8";
     private static $MAX_REQUEST_PER_SEC = 3;
     public static $last_query_ts = 0;
 
