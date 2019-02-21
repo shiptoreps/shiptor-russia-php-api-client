@@ -71,4 +71,10 @@ class Method extends ArrayCollection{
     public function getTotalReadable(){
         return $this->getTotal()->get("readable");
     }
+    public function getDays(){
+        return $this->get('days');
+    }
+    public function getPriority(){
+        return $this->get('priority');
+    }
 }
