@@ -17,7 +17,7 @@ class AddDeliveryPointPackages extends GenericShippingRequest{
                         ->String("email")->add()
                         ->String("phone")->setRequired()->add()
                     ->endCollection()
-                    ->String("delivery_point")->setRequired()->add()
+                    ->Number("delivery_point")->setRequired()->add()
                     ->String("date")->setRequired()->add()
                     ->String("comment")->setRequired()->add()
                 ->endCollection()
@@ -27,7 +27,7 @@ class AddDeliveryPointPackages extends GenericShippingRequest{
     public function getShipment(){
         return $this->getFieldsCollection()->get("shipment");
     }
-    public function setType($type){
+    private function setType($type){
         return $this->getShipment()->get("type")->setValue($type);
     }
     public function setCourier($courier){
@@ -54,6 +54,9 @@ class AddDeliveryPointPackages extends GenericShippingRequest{
     public function forSprs(){
         return $this->setCourier(self::COURIER_SPSR);
     }
+    public function getAddress(){
+        return $this->getShipment()->get('address');
+    }
     public function setReciever($reciever){
         return $this->getAddress()->get("receiver")->setValue($reciever);
     }
@@ -64,10 +67,16 @@ class AddDeliveryPointPackages extends GenericShippingRequest{
         return $this->getAddress()->get("phone")->setValue($phone);
     }
     public function setDate($date){
-        return $this->getShipment()->get("date")->setValue($date);
+        $this->getShipment()->get("date")->setValue($date);
+        return $this;
+    }
+    public function setDeliveryPoint($deliveryPoint){
+        $this->getShipment()->get('delivery_point')->setValue($deliveryPoint);
+        return $this;
     }
     public function setComment($comment){
-        return $this->getShipment()->get("comment")->setValue($comment);
+        $this->getShipment()->get("comment")->setValue($comment);
+        return $this;
     }
     public function newPackage(){
         return $this->getFieldsCollection()->get("packages")->_new();

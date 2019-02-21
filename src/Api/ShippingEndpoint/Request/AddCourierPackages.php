@@ -37,7 +37,7 @@ class AddCourierPackages extends GenericShippingRequest{
     public function getShipment(){
         return $this->getFieldsCollection()->get("shipment");
     }
-    public function setType($type){
+    private function setType($type){
         $this->getShipment()->get("type")->setValue($type);
         return $this;
     }
