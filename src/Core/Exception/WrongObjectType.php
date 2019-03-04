@@ -1,16 +1,16 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Core\Exception;
+
+use ShiptorRussiaApiClient\Client\Core\Lang\Messages;
 /**
  * Class WrongObjectType
  */
 class WrongObjectType extends \RuntimeException{
-    const MESSAGE = "Wrong object type `%s` at %s, field %s";
     /**
      * WrongObjectType constructor.
      * @param string $arParams
      */
-    public function __construct($arParams)
-    {
-        parent::__construct(vsprintf(self::MESSAGE, $arParams));
+    public function __construct($arParams){
+        parent::__construct(vsprintf(Messages::get('EXC_WRONG_OBJECT_TYPE'), $arParams));
     }
 }

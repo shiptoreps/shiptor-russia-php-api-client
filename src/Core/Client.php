@@ -58,7 +58,7 @@ abstract class Client{
                 $response = $request->json();
             }
         } catch (BadResponseException $exception) {
-            $response = $exception->getResponse()->json();
+            $response = ['error' => ['message' => $exception->getResponse()->getStatusCode().': '.$exception->getResponse()->getReasonPhrase()]];
         }
 
         return $response;

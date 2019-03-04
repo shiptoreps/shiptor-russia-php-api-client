@@ -16,6 +16,9 @@ class Shiptor{
         if(isset($arParams["NAME"]) && !empty($arParams["NAME"])){
             Configuration::setName($arParams["NAME"]);
         }
+        if(isset($arParams["LANG"]) && !empty($arParams["LANG"])){
+            Configuration::setLang($arParams["LANG"]);
+        }
     }
     public function PublicEndpoint(){
         return new PublicEndpoint();

@@ -25,6 +25,8 @@ class ShippingEndpoint{
     private $editProduct;
     private $deleteWarehouse;
     private $getPackage;
+    private $editPackage;
+    private $editPackageExport;
     private $getPackages;
     private $getPackagesCount;
     private $getPickup;
@@ -131,6 +133,12 @@ class ShippingEndpoint{
     }
     public function editProduct(){
         return $this->editProduct = new ShippingRequest\EditProduct();
+    }
+    public function editPackage(){
+        return $this->editPackage = new ShippingRequest\EditPackage();
+    }
+    public function editPackageExport(){
+        return $this->editPackageExport = new ShippingRequest\EditPackageExport();
     }
     public function getCountries(){
         return $this->getCountries = new ShippingRequest\GetCountries();
