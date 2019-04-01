@@ -5,7 +5,7 @@ use ShiptorRussiaApiClient\Client\Core\Configuration;
 
 class Messages{
     private static $langClass = null;
-    public function get($message){
+    public static function get($message){
         if(empty(self::$langClass)){
             self::setLangClass();
         }
