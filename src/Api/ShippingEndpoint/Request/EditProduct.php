@@ -13,6 +13,9 @@ class EditProduct extends AddProduct{
     public function setArticle($article){
         throw new UnavailableMethod(array(__FUNCTION__,__CLASS__));
     }
+    public function setSku($sku){
+        throw new UnavailableMethod(array(__FUNCTION__,__CLASS__));
+    }
     public function setBrand($brand){
         throw new UnavailableMethod(array(__FUNCTION__,__CLASS__));
     }

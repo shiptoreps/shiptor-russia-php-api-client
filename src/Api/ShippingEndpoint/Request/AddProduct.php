@@ -11,6 +11,7 @@ class AddProduct extends GenericShippingRequest{
                 ->String("name")->setRequired()->add()
                 ->String("brand")->add()
                 ->String("barcode")->add()
+                ->String("sku")->add()
                 ->String("article")->setRequired()->add()
                 ->String("shopArticle")->setRequired()->add()
                 ->String("url")->add()
@@ -34,6 +35,9 @@ class AddProduct extends GenericShippingRequest{
     }
     public function setBarcode($barcode){
         return $this->setField("barcode",$barcode);
+    }
+    public function setSku($sku){
+        return $this->setField('sku', $sku);
     }
     public function setArticle($article){
         return $this->setField("article",$article);
