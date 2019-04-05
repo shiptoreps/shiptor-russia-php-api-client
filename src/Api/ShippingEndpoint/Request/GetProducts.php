@@ -10,7 +10,9 @@ class GetProducts extends GenericShippingRequest{
         $this->getFieldsCollection()
                 ->String("shopArticle")->add()
                 ->Number("page")->setRequired()->add()
-                ->Number("per_page")->setRequired()->add();
+                ->Number("per_page")->setRequired()->add()
+                ->String("query")->add()
+                ->String('except')->setMulty()->add();
     }
     public function setShopArticle($shopArticle){
         return $this->setField("shopArticle",$shopArticle);
@@ -26,7 +28,7 @@ class GetProducts extends GenericShippingRequest{
         $this->setPage(1);
         $this->setPageSize(1);
         return $this->setShopArticle($shopArticle);
-    }
+    }    
     public function getResponseClassName() {
         return GetProductsResult::class;
     }
