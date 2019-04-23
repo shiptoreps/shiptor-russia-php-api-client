@@ -100,4 +100,7 @@ class AddPackageExport extends AddPackage{
             'ZA', 'ZM', 'ZW',
         ];
     }
+    public function getAvailableAdditionalServices(){
+        return array(self::AS_EXPRESS_GATHERING, self::AS_ADDITIONAL_PACK, self::AS_PACKAGE_INSURANCE);
+    }
 }
