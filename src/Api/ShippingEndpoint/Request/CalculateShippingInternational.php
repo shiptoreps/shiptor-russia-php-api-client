@@ -93,7 +93,7 @@ class CalculateShippingInternational extends GenericShippingRequest{
             'NA', 'NC', 'NE', 'NG', 'NI', 'NL', 'NO', 'NP', 'NZ',
             'OM',
             'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PT', 'PY',
-            'RO', 'RS', 'RW',
+            'RO', 'RS', 'RW', 'RU',
             'SA', 'SB', 'SC', 'SD', 'SE', 'SG', 'SI', 'SK', 'SN', 'SR', 'ST', 'SV', 'SY',
             'TC', 'TD', 'TG', 'TH', 'TT', 'TJ', 'TN', 'TM', 'TR', 'TZ',
             'UA', 'UG', 'US', 'UY', 'UZ',

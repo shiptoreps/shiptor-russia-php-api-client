@@ -12,7 +12,7 @@ class Messages{
         $langClass = self::$langClass;
         return $langClass::get($message);
     }
-    public function setLangClass(){
+    public static function setLangClass(){
         switch (Configuration::getLang()){
             case 'ru':
                 self::$langClass = Ru::class;

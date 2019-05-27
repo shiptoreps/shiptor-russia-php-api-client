@@ -23,7 +23,7 @@ if($response instanceof ErrorResponse):?>
         <li><?=$result->getName()?></li>
         <li><?=$result->getShopArticle()?></li>
         <li><?=$result->getRetailPrice()?></li>
-        <li><?=$result->getLenth()?> x <?=$result->getWidth()?> x <?=$result->getHeight()?></li>
+        <li><?=$result->getLength()?> x <?=$result->getWidth()?> x <?=$result->getHeight()?></li>
     </ul>
 <?php
 endif;
