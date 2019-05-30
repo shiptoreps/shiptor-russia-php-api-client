@@ -14,7 +14,7 @@ class CalculateShippingInternational extends GenericShippingRequest{
                 ->Number('weight')->setRequired()->add()
                 ->Number('declared_cost')->setRequired()->add()
                 ->Boolean('insurance')->add()
-                ->Enum('departure_country_code')->setRequired()->setOptions($this->getAvailableCountriesExport())->add()
+                ->Enum('departure_country_code')->setRequired()->setOptions($this->getAvailableCountriesExportFrom())->add()
                 ->Enum('destination_country_code')->setRequired()->setOptions($this->getAvailableCountriesExport())->add()
                 ->Enum('courier')->setOptions([GenericShippingRequest::COURIER_DPD])->add();
     }
@@ -75,30 +75,37 @@ class CalculateShippingInternational extends GenericShippingRequest{
     public function getResponseClassName() {
         return CalculateShippingInternationalResult::class;
     }
+    public function getAvailableCountriesExportFrom(){
+        $arCountries = $this->getAvailableCountriesExport();
+        $arCountries[] = 'RU';
+        return $arCountries;
+    }
     public function getAvailableCountriesExport(){
         return [
-            'AE', 'AL', 'AT', 'AU', 'AZ',
-            'BA', 'BB', 'BD', 'BF', 'BE', 'BG', 'BH', 'BI', 'BJ', 'BM', 'BN', 'BO', 'BR', 'BS', 'BT', 'BW', 'BZ',
-            'CA', 'CD', 'CF', 'CG', 'CI', 'CH', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CW', 'CY', 'CZ',
-            'DE', 'DJ', 'DK', 'DM', 'DO', 'DZ',
+            'AB', 'AD', 'AE', 'AF', 'AG', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW', 'AX', 'AZ',
+            'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN', 'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BZ',
+            'CA', 'CC', 'CD', 'CF', 'CG', 'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CW', 'CX', 'CY', 'CZ',
+            'DE', 'DJ', 'DK', 'DM', 'DN', 'DO', 'DZ',
             'EC', 'EE', 'EG', 'ER', 'ES', 'ET',
-            'FI', 'FJ', 'FR',
-            'GA', 'GB', 'GD', 'GE', 'GH', 'GI', 'GM', 'GN', 'GQ', 'GR', 'GT', 'GY',
-            'HK', 'HN', 'HR', 'HT', 'HU',
-            'ID', 'IE', 'IL', 'IN', 'IQ', 'IR', 'IS', 'IT',
-            'JM', 'JO', 'JP',
-            'KE', 'KG', 'KH', 'KN', 'KR', 'KW', 'KY',
-            'LA', 'LB', 'LC', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV',
-            'MA', 'MD', 'ME', 'MG', 'MK', 'ML', 'MO', 'MR', 'MT', 'MN', 'MM', 'MU', 'MV', 'MW', 'MX', 'MY', 'MZ',
-            'NA', 'NC', 'NE', 'NG', 'NI', 'NL', 'NO', 'NP', 'NZ',
-            'OM',
-            'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PT', 'PY',
-            'RO', 'RS', 'RW', 'RU',
-            'SA', 'SB', 'SC', 'SD', 'SE', 'SG', 'SI', 'SK', 'SN', 'SR', 'ST', 'SV', 'SY',
-            'TC', 'TD', 'TG', 'TH', 'TT', 'TJ', 'TN', 'TM', 'TR', 'TZ',
+            'FI', 'FJ', 'FK', 'FM', 'FO', 'FR',
+            'GA', 'GB', 'GD', 'GE', 'GF', 'GH', 'GI', 'GL', 'GM', 'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY',
+            'HK', 'HM', 'HN', 'HR', 'HT', 'HU',
+            'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT',
+            'JE', 'JM', 'JO', 'JP',
+            'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY',
+            'LA', 'LB', 'LC', 'LI', 'LK', 'LN', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY',
+            'MA', 'MC', 'MD', 'ME', 'MF', 'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV', 'MW', 'MX', 'MY', 'MZ',
+            'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR', 'NU', 'NZ',
+            'OM', 'OS',
+            'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS', 'PT', 'PW', 'PY',
+            'QA',
+            'RE', 'RO', 'RS', 'RW',
+            'SA', 'SB', 'SC', 'SD', 'SE', 'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX', 'SY', 'SZ',
+            'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR', 'TT', 'TV', 'TW', 'TZ',
             'UA', 'UG', 'US', 'UY', 'UZ',
-            'VC', 'VE', 'VN', 'VU',
-            'YE',
+            'VA', 'VC', 'VE', 'VG', 'VI', 'VN', 'VU',
+            'WF', 'WS',
+            'YE', 'YT',
             'ZA', 'ZM', 'ZW',
         ];
     }
