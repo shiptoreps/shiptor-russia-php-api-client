@@ -75,7 +75,8 @@ abstract class GenericRequest{
             self::COURIER_DPD,
             self::COURIER_IML,
             self::COURIER_PICKPOINT,
-            self::COURIER_CDEK
+            self::COURIER_CDEK,
+            self::COURIER_SBER
         ];
     }
     public function getSettlementTypes(){
