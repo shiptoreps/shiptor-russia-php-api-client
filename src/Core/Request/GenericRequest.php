@@ -100,6 +100,7 @@ abstract class GenericRequest{
     const COURIER_RUSSIAN_POST = "russian-post";
     const COURIER_PICKPOINT = "pickpoint";
     const COURIER_CDEK = "cdek";
+    const COURIER_SBER = 'sberlogistics';
 
     const SETTLEMENT_TYPE_CITY = "Город";
     const SETTLEMENT_TYPE_OBLAST = "Область";
