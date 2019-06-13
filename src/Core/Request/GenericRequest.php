@@ -65,7 +65,8 @@ abstract class GenericRequest{
             self::COURIER_IML,
             self::COURIER_RUSSIAN_POST,
             self::COURIER_PICKPOINT,
-            self::COURIER_CDEK
+            self::COURIER_CDEK,
+            self::COURIER_SBER
         ];
     }
     public function getAbailablePvzCouriers(){
