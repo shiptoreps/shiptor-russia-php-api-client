@@ -9,6 +9,7 @@ class AddProduct extends GenericShippingRequest{
     protected function initFields(){
         $this->getFieldsCollection()
                 ->String("name")->setRequired()->add()
+                ->String('englishName')->add()
                 ->String("brand")->add()
                 ->String("barcode")->add()
                 ->String("sku")->add()
@@ -29,6 +30,9 @@ class AddProduct extends GenericShippingRequest{
     }
     public function setName($name){
         return $this->setField("name",$name);
+    }
+    public function setEnglishName($name){
+        return $this->setField('englishName',$name);
     }
     public function setBrand($brand){
         return $this->setField("brand",$brand);
