@@ -100,8 +100,8 @@ class GetDeliveryPoints extends GenericRequest{
     public function forCDEK(){
         return $this->setCourier(self::COURIER_CDEK);
     }
-    public function forSPSR(){
-        return $this->setCourier(self::COURIER_SPSR);
+    public function forPec(){
+        return $this->setCourier(self::COURIER_PEC);
     }
     public function getResponseClassName() {
         return DeliveryPointsResult::class;

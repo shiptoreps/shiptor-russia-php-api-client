@@ -98,8 +98,11 @@ class CalculateShipping extends GenericRequest{
     public function forCDEK(){
         return $this->setCourier(self::COURIER_CDEK);
     }
-    public function forSPSR(){
-        return $this->setCourier(self::COURIER_SPSR);
+    public function forPec(){
+        return $this->setCourier(self::COURIER_PEC);
+    }
+    public function forSber(){
+        return $this->setCourier(self::COURIER_SBER);
     }
     public function getResponseClassName() {
         return CalculateShippingResult::class;

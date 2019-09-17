@@ -51,7 +51,7 @@ abstract class GenericRequest{
         return [
             self::COUNTRY_RU,
             self::COUNTRY_KZ,
-            self::COUNTRY_BY,
+            self::COUNTRY_BY
         ];
     }
 
@@ -66,7 +66,8 @@ abstract class GenericRequest{
             self::COURIER_RUSSIAN_POST,
             self::COURIER_PICKPOINT,
             self::COURIER_CDEK,
-            self::COURIER_SBER
+            self::COURIER_SBER,
+            self::COURIER_PEC
         ];
     }
     public function getAbailablePvzCouriers(){
@@ -77,7 +78,8 @@ abstract class GenericRequest{
             self::COURIER_IML,
             self::COURIER_PICKPOINT,
             self::COURIER_CDEK,
-            self::COURIER_SBER
+            self::COURIER_SBER,
+            self::COURIER_PEC
         ];
     }
     public function getSettlementTypes(){
@@ -103,6 +105,7 @@ abstract class GenericRequest{
     const COURIER_PICKPOINT = "pickpoint";
     const COURIER_CDEK = "cdek";
     const COURIER_SBER = 'sberlogistics';
+    const COURIER_PEC = 'pec';
 
     const SETTLEMENT_TYPE_CITY = "Город";
     const SETTLEMENT_TYPE_OBLAST = "Область";
