@@ -37,8 +37,8 @@ class CalculateShipping extends GenericRequest{
         return $this->setField("weight",$value);
     }
     public function setCod($value){
-        if($value < 10){
-            $this->setDeclaredCost(10);
+        if($value < 0){
+            $this->setDeclaredCost(0);
         }else{
             $this->setDeclaredCost($value);
         }
