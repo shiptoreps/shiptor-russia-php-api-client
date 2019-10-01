@@ -9,7 +9,7 @@ class GetDeliveryPoints extends GenericRequest{
         $this->getFieldsCollection()
                 ->String("kladr_id")->setRequired()->add()
                 ->Enum("courier")->setOptions($this->getAbailablePvzCouriers())->add()
-                ->Number("shipping_method")->setRequired()->add()
+                ->Number("shipping_method")->add()
                 ->Boolean("cod")->add()
                 ->Boolean("card")->add()
                 ->Collection("limits")
@@ -18,13 +18,6 @@ class GetDeliveryPoints extends GenericRequest{
                     ->Number("height")->add()
                     ->Number("weight")->add()
                 ->endCollection();
-    }
-    public function validate(){
-        $courier = $this->getFieldsCollection()->get('courier')->getValue();
-        if(!empty($courier)){
-            $this->getFieldsCollection()->get('shipping_method')->unsetRequired();
-        }
-        parent::validate();
     }
     public function setLimits($arLimits){
         $this->getLimits()->get("length")->setValue($arLimits["LENGTH"]);
