@@ -23,12 +23,15 @@ class GetProducts extends GenericShippingRequest{
     public function setPageSize($pageSize){
         return $this->setField("per_page",$pageSize);
     }
+    public function setQuery($query){
+        return $this->setField("query",$query);
+    }
     public function fetchSingleProduct($shopArticle){
         $this->getFieldsCollection()->get('shopArticle')->setRequired();
         $this->setPage(1);
         $this->setPageSize(1);
         return $this->setShopArticle($shopArticle);
-    }    
+    }
     public function getResponseClassName() {
         return GetProductsResult::class;
     }
