@@ -16,6 +16,7 @@ class CalculateShipping extends GenericRequest{
             ->Enum("country_code")->setOptions($this->getAvailableCountries())->add()
             ->String("kladr_id_from")->add()
             ->String("kladr_id")->setRequired()->add()
+            ->Boolean("stock")->add()
             ->Enum("courier")->setOptions($this->getAvailableCouriers())->add();
     }
     public function setDimensions($arDimensions){
@@ -55,6 +56,14 @@ class CalculateShipping extends GenericRequest{
     }
     public function setKladrIdFrom($value){
         return $this->setField("kladr_id_from",$value);
+    }
+    public function setStock($value){
+        return $this->setField("stock", $value);
+    }
+    public function setDefaultStock(){
+        $this->setStock(true);
+        $this->setKladrIdFrom(self::KLADR_MOSCOW);
+        return $this;
     }
     public function setCountryCode($value){
         return $this->setField("country_code",$value);
