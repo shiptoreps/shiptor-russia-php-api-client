@@ -9,7 +9,15 @@ class GetServices extends GenericShippingRequest{
     protected function initFields(){
         $this->getFieldsCollection()
                 ->Number("page")->setRequired()->add()
-                ->Number("per_page")->setRequired()->add();
+                ->Number("per_page")->setRequired()->add()
+                ->String('id')->add()
+                ->String('query')->add();
+    }
+    public function setQquery($query){
+        return $this->setField("query", $query);
+    }
+    public function setId($id){
+        return $this->setField("id", $id);
     }
     public function setPage($page){
         return $this->setField("page",$page);

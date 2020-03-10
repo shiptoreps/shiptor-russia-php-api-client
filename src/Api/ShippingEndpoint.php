@@ -45,6 +45,7 @@ class ShippingEndpoint{
     private $getWarehouse;
     private $getWarehouses;
     private $searchPackages;
+    private $recoverService;
     private $suggestSettlement;
     public function addPackage(){
         return $this->addPackage = new ShippingRequest\AddPackage();
@@ -210,6 +211,9 @@ class ShippingEndpoint{
     }
     public function getWarehouses(){
         return $this->getWarehouses = new ShippingRequest\GetWarehouses();
+    }
+    public function recoverService(){
+        return $this->recoverService = new ShippingRequest\RecoverService();
     }
     public function searchPackages(){
         return $this->searchPackages = new ShippingRequest\SearchPackages();
