@@ -13,7 +13,7 @@ class GetServices extends GenericShippingRequest{
                 ->String('id')->add()
                 ->String('query')->add();
     }
-    public function setQquery($query){
+    public function setQuery($query){
         return $this->setField("query", $query);
     }
     public function setId($id){
