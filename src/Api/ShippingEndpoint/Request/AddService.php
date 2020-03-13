@@ -10,7 +10,7 @@ class AddService extends GenericShippingRequest{
         $this->getFieldsCollection()
                 ->String("name")->setRequired()->add()
                 ->String("shopArticle")->setRequired()->add()
-                ->String("price")->setRequired()->add();
+                ->Number("price")->setRequired()->add();
     }
     public function setName($name){
         return $this->setField('name', $name);
@@ -18,8 +18,8 @@ class AddService extends GenericShippingRequest{
     public function setShopArticle($article){
         return $this->setField('shopArticle', $article);
     }
-    public function setPrice($article){
-        return $this->setField('price', $article);
+    public function setPrice($price){
+        return $this->setField('price', $price);
     }
     public function getResponseClassName() {
         return AddServiceResult::class;
