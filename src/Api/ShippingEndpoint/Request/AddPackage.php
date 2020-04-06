@@ -23,6 +23,9 @@ class AddPackage extends GenericShippingRequest{
             ->Collection("departure")
                 ->Number("shipping_method")->setRequired()->add()
                 ->Number("delivery_point")->add()
+                ->Number("delivery_time")->add()
+                ->String("delivery_time_string")->add()
+                ->String("delayed_delivery_at")->add()
                 ->Boolean("cashless_payment")->add()
                 ->String("comment")->add()
                 ->Collection("address")
@@ -45,8 +48,9 @@ class AddPackage extends GenericShippingRequest{
             ->endCollection()
             ->Custom("products",PackageProduct::class)->setRequired()->setMulty()->add()
             ->String("photos")->setMulty()->add()
-            ->Custom("services",PackageService::class)->setMulty()->add()
-            ->Enum('additional_service')->setOptions($this->getAvailableAdditionalServices())->setMulty()->add();
+            ->Custom('services',PackageService::class)->setMulty()->add()
+            ->Enum('additional_service')->setOptions($this->getAvailableAdditionalServices())->setMulty()->add()
+            ->String('attachment')->add();
     }
     public function validate(){
         $receiver = $this->getAddress()->get('receiver')->getValue();
@@ -134,6 +138,18 @@ class AddPackage extends GenericShippingRequest{
     }
     public function setDeliveryPoint($deliveryPoint){
         $this->getDeparture()->get("delivery_point")->setValue($deliveryPoint);
+        return $this;
+    }
+    public function setDeliveryTime($deliveryTime){
+        $this->getDeparture()->get("delivery_time")->setValue($deliveryTime);
+        return $this;
+    }
+    public function setDeliveryTimeString($deliveryTimeString){
+        $this->getDeparture()->get("delivery_time_string")->setValue($deliveryTimeString);
+        return $this;
+    }
+    public function setDeliveryDate($deliveryDate){
+        $this->getDeparture()->get("delayed_delivery_at")->setValue($deliveryDate);
         return $this;
     }
     public function setCashlessPayment($cashlessPayment){
@@ -246,6 +262,9 @@ class AddPackage extends GenericShippingRequest{
     }
     public function withAdditionalPack(){
         return $this->addAdditionalService(self::AS_ADDITIONAL_PACK);
+    }
+    public function setAttachment($attachment){
+        return $this->setField('attachment', $attachment);
     }
     public function getResponseClassName() {
         return AddPackageResult::class;
