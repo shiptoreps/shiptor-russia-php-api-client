@@ -7,7 +7,7 @@ class GenericResponse{
     public function __construct($response,$resultClass) {
         $this->setResponse($response);
         if($this->isError()){
-            throw new \Exception($this->response['error']['message']);
+            throw new \Exception($this->response['error']['message'], $this->response['error']['code']);
         }else{
             $this->setResult($resultClass);
         }
