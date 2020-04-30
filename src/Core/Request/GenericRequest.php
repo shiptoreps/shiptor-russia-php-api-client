@@ -30,7 +30,7 @@ abstract class GenericRequest{
             $client = $this->getClient();
             return $this->setResponse($client->call($this->getMethodName(),$data));
         }catch(\Exception $e){
-            return new ErrorResponse($e->getMessage());
+            return new ErrorResponse($e);
         }
     }
     public function setResponse($response){

@@ -52,13 +52,16 @@ abstract class Client{
                 if($request->getStatusCode() === 200){
                     $response = json_decode((string)$request->getBody(), true);
                 }else{
-                    throw new \Exception($request->getStatusCode().': '.$request->getReasonPhrase());
+                    throw new \Exception($request->getStatusCode().': '.$request->getReasonPhrase(), $request->getStatusCode());
                 }
             }else{//GuzzleHttp 5.1
                 $response = $request->json();
             }
         } catch (BadResponseException $exception) {
-            $response = ['error' => ['message' => $exception->getResponse()->getStatusCode().': '.$exception->getResponse()->getReasonPhrase()]];
+            $response = ['error' => [
+                'message' => $exception->getResponse()->getStatusCode().': '.$exception->getResponse()->getReasonPhrase(),
+                'code' => $exception->getResponse()->getStatusCode()]
+            ];
         }
 
         return $response;
