@@ -29,6 +29,7 @@ class ShippingEndpoint{
     private $editPackageExport;
     private $getPackages;
     private $getPackagesCount;
+    private $getPackagesCurrentStatus;
     private $getPickup;
     private $getPickupTime;
     private $getProducts;
@@ -163,6 +164,9 @@ class ShippingEndpoint{
     }
     public function getPackagesCount(){
         return $this->getPackagesCount = new ShippingRequest\GetPackagesCount();
+    }
+    public function getPackagesCurrentStatus(){
+        return $this->getPackagesCurrentStatus = new ShippingRequest\GetPackagesCurrentStatus();
     }
     public function getPickUp($id = null){
         $this->getPickup = new ShippingRequest\GetPickup();
