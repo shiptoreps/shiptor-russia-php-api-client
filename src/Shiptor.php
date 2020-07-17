@@ -19,6 +19,18 @@ class Shiptor{
         if(isset($arParams["LANG"]) && !empty($arParams["LANG"])){
             Configuration::setLang($arParams["LANG"]);
         }
+        if(isset($arParams["SHIPPING_VERSION"]) && !empty($arParams["SHIPPING_VERSION"])){
+            $shippingVersion = intval($arParams["SHIPPING_VERSION"]);
+        }else{
+            $shippingVersion = 1;
+        }
+        Configuration::setShippingUrl($shippingVersion);
+        if(isset($arParams["PUBLIC_VERSION"]) && !empty($arParams["PUBLIC_VERSION"])){
+            $publicShipping = intval($arParams["PUBLIC_VERSION"]);
+        }else{
+            $publicShipping = 1;
+        }
+        Configuration::setPublicUrl($publicShipping);
     }
     public function PublicEndpoint(){
         return new PublicEndpoint();

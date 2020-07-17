@@ -5,13 +5,17 @@ class Configuration{
     private static $encoding = "UTF-8";
     private static $apiKey = "";
     private static $name = "Shiptor Russia SDK";
-    private static $version = "1.5.3";
+    private static $version = "1.5.4";
     private static $MAX_REQUEST_PER_SEC = 3;
     private static $lang = 'en';
+    private static $shippingUrl;
+    private static $publicUrl;
     public static $last_query_ts = 0;
 
     const PUBLIC_URL = "https://api.shiptor.ru/public/v1";
+    const PUBLIC_URL_V2 = "https://api.shiptor.ru/public/v2";
     const SHIPPING_URL = "https://api.shiptor.ru/shipping/v1";
+    const SHIPPING_URL_V2 = "https://api.shiptor.ru/shipping/v2";
 
     public static function setApiKey($apiKey){
         self::$apiKey = $apiKey;
@@ -30,6 +34,24 @@ class Configuration{
             self::$lang = $lang;
         }
     }
+    public static function setShippingUrl($shippingVersion){
+        switch($shippingVersion){
+            case 2:
+                self::$shippingUrl = self::SHIPPING_URL_V2;
+                break;
+            default:
+                self::$shippingUrl = self::SHIPPING_URL;
+        }
+    }
+    public static function setPublicUrl($publicVersion){
+        switch($publicVersion){
+            case 2:
+                self::$publicUrl = self::PUBLIC_URL_V2;
+                break;
+            default:
+                self::$publicUrl = self::PUBLIC_URL;
+        }
+    }
     public static function getApiKey(){
         return self::$apiKey;
     }
@@ -44,6 +66,12 @@ class Configuration{
     }
     public static function getLang(){
         return self::$lang;
+    }
+    public static function getShippingUrl(){
+        return self::$shippingUrl;
+    }
+    public static function getPublicUrl(){
+        return self::$publicUrl;
     }
     public static function getMaxRequestFrequency(){
         if(self::$MAX_REQUEST_PER_SEC == 0){

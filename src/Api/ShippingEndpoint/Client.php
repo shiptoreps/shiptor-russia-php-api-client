@@ -5,7 +5,7 @@ use ShiptorRussiaApiClient\Client\Core;
 
 class Client extends Core\Client{
     protected function setApiUrl() {
-        $this->apiUrl = Core\Configuration::SHIPPING_URL;
+        $this->apiUrl = Core\Configuration::getShippingUrl();
     }
     protected function setHeaders(){
         parent::setHeaders();
