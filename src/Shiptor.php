@@ -24,13 +24,16 @@ class Shiptor{
         }else{
             $shippingVersion = 1;
         }
-        Configuration::setShippingUrl($shippingVersion);
+        Configuration::setShippingUrlByVersion($shippingVersion);
         if(isset($arParams["PUBLIC_VERSION"]) && !empty($arParams["PUBLIC_VERSION"])){
             $publicShipping = intval($arParams["PUBLIC_VERSION"]);
         }else{
             $publicShipping = 1;
         }
-        Configuration::setPublicUrl($publicShipping);
+        Configuration::setPublicUrlByVersion($publicShipping);
+        if(isset($arParams["BASE_URL"]) && !empty($arParams["BASE_URL"])){
+            Configuration::setBaseUrl($arParams["BASE_URL"]);
+        }
     }
     public function PublicEndpoint(){
         return new PublicEndpoint();

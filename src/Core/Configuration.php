@@ -10,12 +10,13 @@ class Configuration{
     private static $lang = 'en';
     private static $shippingUrl;
     private static $publicUrl;
+    private static $baseUrl = 'https://api.shiptor.ru';
     public static $last_query_ts = 0;
 
-    const PUBLIC_URL = "https://api.shiptor.ru/public/v1";
-    const PUBLIC_URL_V2 = "https://api.shiptor.ru/public/v2";
-    const SHIPPING_URL = "https://api.shiptor.ru/shipping/v1";
-    const SHIPPING_URL_V2 = "https://api.shiptor.ru/shipping/v2";
+    const PUBLIC_URL = "/public/v1";
+    const PUBLIC_URL_V2 = "/public/v2";
+    const SHIPPING_URL = "/shipping/v1";
+    const SHIPPING_URL_V2 = "/shipping/v2";
 
     public static function setApiKey($apiKey){
         self::$apiKey = $apiKey;
@@ -34,7 +35,13 @@ class Configuration{
             self::$lang = $lang;
         }
     }
-    public static function setShippingUrl($shippingVersion){
+    public static function setBaseUrl($baseUrl){
+        self::$baseUrl = $baseUrl;
+    }
+    public static function setShippingUrl($shippingUrl){
+        self::$shippingUrl = $shippingUrl;
+    }
+    public static function setShippingUrlByVersion($shippingVersion){
         switch($shippingVersion){
             case 2:
                 self::$shippingUrl = self::SHIPPING_URL_V2;
@@ -43,7 +50,10 @@ class Configuration{
                 self::$shippingUrl = self::SHIPPING_URL;
         }
     }
-    public static function setPublicUrl($publicVersion){
+    public static function setPublicUrl($publicUrl){
+        self::$publicUrl = $publicUrl;
+    }
+    public static function setPublicUrlByVersion($publicVersion){
         switch($publicVersion){
             case 2:
                 self::$publicUrl = self::PUBLIC_URL_V2;
@@ -68,10 +78,10 @@ class Configuration{
         return self::$lang;
     }
     public static function getShippingUrl(){
-        return self::$shippingUrl;
+        return self::$baseUrl.self::$shippingUrl;
     }
     public static function getPublicUrl(){
-        return self::$publicUrl;
+        return self::$baseUrl.self::$publicUrl;
     }
     public static function getMaxRequestFrequency(){
         if(self::$MAX_REQUEST_PER_SEC == 0){
