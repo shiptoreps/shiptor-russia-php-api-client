@@ -34,7 +34,7 @@ class AddPackage extends GenericShippingRequest{
                     ->String("surname")->setRequired()->add()
                     ->String("patronymic")->add()
                     ->String("receiver")->add()
-                    ->String("email")->setRequired()->add()
+                    ->String("email")->add()
                     ->String("phone")->setRequired()->add()
                     ->String("postal_code")->add()
                     ->String("administrative_area")->add()
