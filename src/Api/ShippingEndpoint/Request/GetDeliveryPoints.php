@@ -11,7 +11,9 @@ class GetDeliveryPoints extends PublicGetDeliveryPoints{
     protected function initFields() {
         parent::initFields();
         $this->getFieldsCollection()
-                ->Boolean("self_pick_up")->add();
+                ->Boolean("self_pick_up")->add()
+                ->Boolean("self_pick_up_real_time")->add()
+                ->Number("from_delivery_point")->add();
     }
     public function setSelfPickup($value){
         return $this->setField("self_pick_up", $value);
@@ -21,5 +23,11 @@ class GetDeliveryPoints extends PublicGetDeliveryPoints{
     }
     public function withoutSelfPickup(){
         return $this->setSelfPickup(false);
+    }
+    public function setSelfPickupRealTime($value){
+        return $this->setField("self_pick_up_real_time", $value);
+    }
+    public function setFromDeliveryPoint($value){
+        return $this->setField("from_delivery_point", $value);
     }
 }

@@ -3,7 +3,7 @@
     "license": "MIT",
     "type": "library",
     "description": "Shiptor Russia Api client",
-    "version": "1.5.6",
+    "version": "1.5.7",
     "autoload": {
         "psr-4": {
           "ShiptorRussiaApiClient\\Client\\": "src/"

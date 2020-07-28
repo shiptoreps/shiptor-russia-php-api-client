@@ -14,6 +14,7 @@ class ShippingEndpoint{
     private $addService;
     private $addShipment;
     private $addWarehouse;
+    private $bookPackagePostamatCell;
     private $calculateShipping;
     private $calculateShippingInternational;
     private $cancelPickup;
@@ -77,6 +78,13 @@ class ShippingEndpoint{
     }
     public function addWarehouse(){
         return $this->addWarehouse = new ShippingRequest\AddWarehouse();
+    }
+    public function bookPackagePostamatCell($packageId = null){
+        $this->bookPackagePostamatCell = new ShippingRequest\BookPackagePostamatCell();
+        if(!empty($packageId)){
+            $this->bookPackagePostamatCell->setPackageId($packageId);
+        }
+        return $this->bookPackagePostamatCell;
     }
     public function calculateShipping() {
         $this->calculateShipping = new ShippingRequest\CalculateShipping();
