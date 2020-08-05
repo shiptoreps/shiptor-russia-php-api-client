@@ -13,7 +13,8 @@ class GetDeliveryPoints extends PublicGetDeliveryPoints{
         $this->getFieldsCollection()
                 ->Boolean("self_pick_up")->add()
                 ->Boolean("self_pick_up_real_time")->add()
-                ->Number("from_delivery_point")->add();
+                ->Number("from_delivery_point")->add()
+                ->Sring("polygon")->setMulty()->add();
     }
     public function setSelfPickup($value){
         return $this->setField("self_pick_up", $value);
