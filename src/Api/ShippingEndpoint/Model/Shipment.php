@@ -16,6 +16,9 @@ class Shipment extends Result{
     public function getAwaitingCount(){
         return $this->get("awaitingCount");
     }
+    public function isArrived(){
+        return $this->get("arrived");
+    }
     public function getAwaitingProductCount(){
         return $this->get("awaitingProductCount");
     }

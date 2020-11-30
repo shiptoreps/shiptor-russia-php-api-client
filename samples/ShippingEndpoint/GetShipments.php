@@ -28,10 +28,13 @@ if($response instanceof ErrorResponse):?>
                     <li><?php echo $shipment->getAwaitingCount()?></li>
                     <li><?php echo $shipment->getAwaitingProductCount()?></li>
                     <li><?php echo $shipment->getStock()?></li>
+                    <li><?php if ($shipment->isArrived()):?> Отгружена<?php else: ?> Не отгружена <?php endif; ?></li>
                     <li>
                         <ul>
                             <?php foreach ($shipment->getProducts() as $product):?>
                                 <li><?php echo $product->getName()?></li>
+                                <li><?php echo $product->getAwaitingCount()?></li>
+                                <li><?php echo $product->getArrivedCount()?></li>
                                 <li><?php echo $product->getSku()?></li>
                                 <li><?php echo $product->getArticle()?></li>
                                 <li><?php echo $product->getShopArticle()?></li>

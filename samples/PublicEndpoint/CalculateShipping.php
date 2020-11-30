@@ -25,6 +25,9 @@ if($response instanceof ErrorResponse):?>
                     <li><?php echo $method->getDescription()?></li>
                     <li><?php echo $method->getComment()?></li>
                     <li><?php echo $method->getTotalReadable()?></li>
+                    <li><?php echo $method->getMinDays()?> - <?php echo $method->getMaxDays()?></li>
+                    <li><?php echo $method->getMinDeclaredCost()?></li>
+                    <li><?php echo implode(",", $method->getTypes())?></li>
                     <li>
                         <ul>
                             <?php

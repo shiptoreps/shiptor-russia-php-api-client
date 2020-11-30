@@ -74,7 +74,19 @@ class Method extends ArrayCollection{
     public function getDays(){
         return $this->get('days');
     }
+    public function getMinDays(){
+        return $this->get('min_days');
+    }
+    public function getMaxDays(){
+        return $this->get('max_days');
+    }
     public function getPriority(){
         return $this->get('priority');
+    }
+    public function getTypes(){
+        return $this->get('types');
+    }
+    public function getMinDeclaredCost(){
+        return $this->get('min_declared_cost');
     }
 }

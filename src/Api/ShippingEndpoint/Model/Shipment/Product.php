@@ -16,6 +16,12 @@ class Product extends ArrayCollection{
     public function getCount(){
         return $this->get("awaitingCount");
     }
+    public function getAwaitingCount(){
+        return $this->get("awaitingCount");
+    }
+    public function getArrivedCount(){
+        return $this->get("arrivedCount");
+    }
     public function getProduct(){
         return $this->product;
     }

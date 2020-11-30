@@ -13,7 +13,7 @@ class AddProduct extends GenericShippingRequest{
                 ->String("brand")->add()
                 ->String("barcode")->add()
                 ->String("sku")->add()
-                ->String("article")->setRequired()->add()
+                ->String("article")->add()
                 ->String("shopArticle")->setRequired()->add()
                 ->String("url")->add()
                 ->Number("length")->add()

@@ -18,7 +18,6 @@ class ShippingEndpoint{
     private $calculateShipping;
     private $calculateShippingInternational;
     private $cancelPickup;
-    private $deletePackage;
     private $deleteProduct;
     private $deleteProvider;
     private $deleteService;
@@ -48,6 +47,7 @@ class ShippingEndpoint{
     private $getWarehouses;
     private $searchPackages;
     private $recoverService;
+    private $removePackage;
     private $suggestSettlement;
     public function addPackage(){
         return $this->addPackage = new ShippingRequest\AddPackage();
@@ -100,12 +100,12 @@ class ShippingEndpoint{
         }
         return $this->cancelPickup;
     }
-    public function deletePackage($externalId = null){
-        $this->deletePackage = new ShippingRequest\DeletePackage();
+    public function removePackage($externalId = null){
+        $this->removePackage = new ShippingRequest\RemovePackage();
         if(!empty($externalId)){
-            $this->deletePackage->setExternalId($externalId);
+            $this->removePackage->setExternalId($externalId);
         }
-        return $this->deletePackage;
+        return $this->removePackage;
     }
     public function deleteProduct($shopArticle = null){
         $this->deleteProduct = new ShippingRequest\DeleteProduct();
