@@ -2,7 +2,7 @@
 namespace ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request;
 
 use ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GenericRequest as GenericShippingRequest,
-    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Model\AddWarehouse as AddWarehouseResult;
+    ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Model\Warehouse as AddWarehouseResult;
 
 class AddWarehouse extends GenericShippingRequest{
     protected $name = "addWarehouse";
