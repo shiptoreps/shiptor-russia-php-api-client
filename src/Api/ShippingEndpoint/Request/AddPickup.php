@@ -5,7 +5,7 @@ use ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Request\GenericRequest as
     ShiptorRussiaApiClient\Client\Api\ShippingEndpoint\Model\Pickup as AddPickupResult;
 
 class AddPickup extends GenericShippingRequest{
-    protected $name = "addPickup";
+    protected $name = "addPickUp";
     protected function initFields(){
         $this->getFieldsCollection()
                 ->Number("warehouse_id")->setRequired()->add()

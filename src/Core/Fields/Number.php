@@ -14,6 +14,10 @@ class Number extends Field{
         return is_numeric($value);
     }
     public function isEmpty(){
-        return !is_numeric($this->value);
+        if($this->isMulty()){
+            return parent::isEmpty();
+        }else{
+            return !is_numeric($this->value);
+        }
     }
 }
