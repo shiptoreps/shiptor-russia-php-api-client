@@ -67,7 +67,7 @@ abstract class GenericRequest{
             self::COURIER_PICKPOINT,
             self::COURIER_CDEK,
             self::COURIER_SBER,
-            self::СOURIER_SBER_C2C,
+            self::COURIER_SBER_C2C,
             self::COURIER_PEC
         ];
     }
@@ -80,6 +80,7 @@ abstract class GenericRequest{
             self::COURIER_PICKPOINT,
             self::COURIER_CDEK,
             self::COURIER_SBER,
+            self::COURIER_SBER_C2C,
             self::COURIER_PEC
         ];
     }
@@ -106,7 +107,7 @@ abstract class GenericRequest{
     const COURIER_PICKPOINT = "pickpoint";
     const COURIER_CDEK = "cdek";
     const COURIER_SBER = 'sberlogistics';
-    const СOURIER_SBER_C2C = 'sber_courier_c2c';
+    const COURIER_SBER_C2C = 'sber_courier_c2c';
     const COURIER_PEC = 'pec';
 
     const SETTLEMENT_TYPE_CITY = "Город";
