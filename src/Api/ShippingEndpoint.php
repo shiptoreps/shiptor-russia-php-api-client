@@ -7,6 +7,7 @@ class ShippingEndpoint{
     private $addCourierPackages;
     private $addDeliveryPointPackages;
     private $addPackage;
+    private $addMultiPlacePackage;
     private $addPackageExport;
     private $addPickup;
     private $addProduct;
@@ -52,6 +53,12 @@ class ShippingEndpoint{
     public function addPackage(){
         return $this->addPackage = new ShippingRequest\AddPackage();
     }
+
+    public function addMultiPlacePackage()
+    {
+        return $this->addMultiPlacePackage = new ShippingRequest\AddMultiPlacePackage();
+    }
+
     public function addPackageExport(){
         return $this->addPackageExport = new ShippingRequest\AddPackageExport();
     }

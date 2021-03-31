@@ -38,9 +38,14 @@ abstract class Field{
     public function setCollection(FieldsCollection $collection){
         return $this->_set("collection", $collection);
     }
+
+    /**
+     * @return FieldsCollection
+     */
     public function add(){
         return $this->getCollection()->add($this->getName(),$this);
     }
+
     public function setValue($value){
         if($this->isMulty()){
             if(is_array($value)){
@@ -68,9 +73,14 @@ abstract class Field{
     public function isRequired(){
         return $this->required;
     }
+
+    /**
+     * @return FieldsCollection
+     */
     public function getCollection(){
         return $this->collection;
     }
+
     public function getValue(){
         return $this->value;
     }

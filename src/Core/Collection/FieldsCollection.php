@@ -40,9 +40,16 @@ class FieldsCollection{
     public function Enum($name){
         return $this->createField("Enum",$name);
     }
+
+    /**
+     * @param string $name
+     * @param string $className
+     * @return Field
+     */
     public function Custom($name, $className){
         return (new $className($name))->setCollection($this);
     }
+
     public function Collection($name){
         $this->setSubcollectionName($name);
         return new FieldsCollection($this->getEntity(),$this);
@@ -56,6 +63,11 @@ class FieldsCollection{
     public function endCollection(){
         return $this->getParent()->add($this->getParent()->getSubcollectionName(),$this);
     }
+
+    /**
+     * @param string $key
+     * @return Field|FieldsCollection
+     */
     public function get($key){
         if(!$this->contains($key)){
             throw new UnknownField([$key,$this->getEntity()->getMethodName()]);
