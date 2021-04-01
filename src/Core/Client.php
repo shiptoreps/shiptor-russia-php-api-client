@@ -4,8 +4,14 @@ namespace ShiptorRussiaApiClient\Client\Core;
 use GuzzleHttp\Client as GuzzleClient,
     GuzzleHttp\Exception\BadResponseException,
     ShiptorRussiaApiClient\Client\Core\Configuration;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
-abstract class Client{
+abstract class Client implements LoggerAwareInterface
+{
+    use LoggerAwareTrait;
+
     protected $apiUrl;
     protected $client;
     protected $headers = [];
@@ -16,11 +22,16 @@ abstract class Client{
     protected function __construct(){
         $this->setApiUrl();
         $this->client = new GuzzleClient();
+        $this->logger = new NullLogger();
     }
     final public static function getInstance(){
         $calledClass = get_called_class();
         if (!isset(static::$instances[$calledClass])){
-            static::$instances[$calledClass] = new $calledClass();
+            $instance = new $calledClass();
+            if ($instance instanceof LoggerAwareInterface) {
+                $instance->setLogger(Configuration::getLogger());
+            }
+            static::$instances[$calledClass] = $instance;
         }
         return static::$instances[$calledClass];
     }
@@ -57,11 +68,19 @@ abstract class Client{
             }else{//GuzzleHttp 5.1
                 $response = $request->json();
             }
+
+            if (!empty($response['error'])) {
+                $this->logger->error(sprintf('Request %s error', $this->apiUrl), ['request' => $data, 'response' => $response]);
+            } else {
+                $this->logger->debug(sprintf('Request %s', $this->apiUrl), ['request' => $data, 'response' => $response]);
+            }
         } catch (BadResponseException $exception) {
             $response = ['error' => [
                 'message' => $exception->getResponse()->getStatusCode().': '.$exception->getResponse()->getReasonPhrase(),
                 'code' => $exception->getResponse()->getStatusCode()]
             ];
+
+            $this->logger->error(sprintf('Request %s error', $this->apiUrl), ['request' => $data, 'response' => $response]);
         }
 
         return $response;
