@@ -1,6 +1,9 @@
 <?php
 namespace ShiptorRussiaApiClient\Client\Core;
 
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
+
 class Configuration{
     private static $encoding = "UTF-8";
     private static $apiKey = "";
@@ -12,6 +15,7 @@ class Configuration{
     private static $publicUrl;
     private static $baseUrl = 'https://api.shiptor.ru';
     public static $last_query_ts = 0;
+    public static $logger;
 
     const PUBLIC_URL = "/public/v1";
     const PUBLIC_URL_V2 = "/public/v2";
@@ -94,5 +98,18 @@ class Configuration{
     }
     public static function setMaxRequestNum($numOfRequest){
         self::$MAX_REQUEST_PER_SEC = intval($numOfRequest);
+    }
+
+    public static function setLogger(LoggerInterface $logger)
+    {
+        self::$logger = $logger;
+    }
+
+    /**
+     * @return LoggerInterface
+     */
+    public static function getLogger()
+    {
+        return self::$logger instanceof LoggerInterface ? self::$logger : new NullLogger();
     }
 }
