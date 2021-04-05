@@ -105,12 +105,18 @@ class AddMultiPlacePackage extends GenericShippingRequest
         return $this;
     }
 
+    /**
+     * @return Service
+     */
     public function newService()
     {
         /** @noinspection PhpPossiblePolymorphicInvocationInspection */
         return $this->getFieldsCollection()->get("services")->_new();
     }
 
+    /**
+     * @return Product
+     */
     public function newProduct()
     {
         /** @noinspection PhpPossiblePolymorphicInvocationInspection */
@@ -265,6 +271,9 @@ class AddMultiPlacePackage extends GenericShippingRequest
         return $this;
     }
 
+    /**
+     * @return Package
+     */
     public function newPackage()
     {
         /** @noinspection PhpPossiblePolymorphicInvocationInspection */

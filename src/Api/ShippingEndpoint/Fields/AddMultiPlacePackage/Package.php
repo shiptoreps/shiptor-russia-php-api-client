@@ -66,6 +66,9 @@ class Package extends Custom
         return $this;
     }
 
+    /**
+     * @return PackageProduct
+     */
     public function newProduct()
     {
         /** @noinspection PhpPossiblePolymorphicInvocationInspection */
