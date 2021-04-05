@@ -36,7 +36,7 @@ class AddMultiPlacePackage extends GenericShippingRequest
                     ->String("name")->setRequired()->add()
                     ->String("surname")->setRequired()->add()
                     ->String("patronymic")->add()
-                    ->String("receiver")->setRequired()->add()
+                    ->String("receiver")->add()
                     ->String("email")->setRequired()->add()
                     ->String("phone")->setRequired()->add()
                     ->String("postal_code")->add()
