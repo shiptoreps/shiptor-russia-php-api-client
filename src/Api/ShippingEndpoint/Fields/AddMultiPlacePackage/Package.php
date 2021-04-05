@@ -15,6 +15,7 @@ class Package extends Custom
             ->Number("height")->setRequired()->add()
             ->Number("weight")->setRequired()->add()
             ->Number("cod")->setRequired()->add()
+            ->Number("declared_cost")->setRequired()->add()
             ->Custom("products", PackageProduct::class)->setMulty()->setRequired()->add()
             ->String("photos")->setMulty()->add()
         ;
@@ -63,6 +64,12 @@ class Package extends Custom
     public function setCod($cod)
     {
         $this->getFieldsCollection()->get("cod")->setValue($cod);
+        return $this;
+    }
+
+    public function setDeclaredCost($cost)
+    {
+        $this->getFieldsCollection()->get("declared_cost")->setValue($cost);
         return $this;
     }
 
