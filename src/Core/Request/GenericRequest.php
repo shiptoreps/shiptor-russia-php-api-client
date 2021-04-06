@@ -41,9 +41,14 @@ abstract class GenericRequest{
         return $this->name;
     }
     abstract protected function getClient();
+
+    /**
+     * @return FieldsCollection
+     */
     protected function getFieldsCollection(){
         return $this->fields;
     }
+
     abstract public function getResponseClassName();
     abstract protected function initFields();
 

@@ -12,7 +12,7 @@ abstract class GenericRequest extends Request\GenericRequest{
         return array(self::AS_EXPRESS_GATHERING, self::AS_ADDITIONAL_PACK);
     }
     const AS_EXPRESS_GATHERING = 'express-gathering';
-    //const AS_PARTIAL_PAYOUT = 'partial-pay-out';
+    const AS_PARTIAL_PAYOUT = 'partial-pay-out';
     const AS_ADDITIONAL_PACK = 'additional-pack';
     const AS_PACKAGE_INSURANCE = 'package-insurance';
 }

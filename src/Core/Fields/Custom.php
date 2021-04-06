@@ -18,9 +18,14 @@ abstract class Custom extends Field{
         }
         $this->setFields();
     }
+
+    /**
+     * @return FieldsCollection
+     */
     protected function getFieldsCollection(){
         return ($this->isMulty()?$this->fields[$this->index]:$this->fields);
     }
+
     abstract protected function setFields();
     public function _new(){
         if($this->isMulty()){
